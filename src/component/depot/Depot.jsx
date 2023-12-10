@@ -15,12 +15,26 @@ const Depot = () => {
         <div className="input-group">
           <h2>Destinataire</h2>
           <input type="text" placeholder="Name" />
-          <input className='bottom-input'type="text" placeholder="Adress" />
+          <input type="text" placeholder="Adress" />
+          <input className='bottom-input' type ="number" placeholder='tel si exterieur' />
         </div>
       </div>
-      <div className="send-button-container">
-        <button>Send</button>
+      <div className="input-container" >
+        <div className="input-group" >
+        <button>Envoi</button>
+        <input type = 'number' placeholder='numero'/>
+        <input type = 'number' placeholder='montant' />
+        <input className='bottom-input' type = 'text' placeholder='poids' />
       </div>
+      <div>
+      <div className="input-group">
+        <button>AR</button>
+        <input type = 'text' placeholder='nom'/>
+        <input type = 'text' placeholder='Rue et Num' />
+        <input  className='bottom-input' type = 'text' placeholder='Localite et pays' />
+      </div>
+      </div>
+          </div>
     </div>
   );
 };

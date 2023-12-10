@@ -1,0 +1,29 @@
+.user-container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: -25vh;
+}
+
+.user-list{
+    padding: 10px;
+    margin: 20px;
+    width: 50vw;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(167, 167, 167);
+    border-radius: 30px;
+}
+
+.user-container button {
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

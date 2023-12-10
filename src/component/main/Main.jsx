@@ -1,9 +1,10 @@
+// Main.jsx
 import React, { useState } from 'react';
 import './Main.css';
 import { useNavigate } from 'react-router-dom';
 import Depot from '../depot/Depot';
 import Nombre from '../depot/Nombre';
-import Operation from '../operation/Operation';
+import User from '../user/User';
 import Destinataire from '../destinataire/Destinataire';
 import Configuration from '../configuration/Configuration';
 import Welcome from '../welcome/Welcome';
@@ -12,12 +13,12 @@ const Main = () => {
   const navigate = useNavigate();
   const [clickedDiv, setClickedDiv] = useState(null);
   const [clickedP, setClickedP] = useState(null);
-  const [showDropdown, setShowDropdown] = useState(false);;
- 
+  const [showDropdown, setShowDropdown] = useState(false);
+
   const logout = () => {
     navigate('/');
   };
-  
+
   const handleMouseEnter = (section) => {
     setClickedDiv(section);
   };
@@ -29,6 +30,11 @@ const Main = () => {
   const handleClickedP = (p) => {
     setClickedP(p === clickedP ? null : p);
   };
+
+  const handleWelcomeClick = (clickedSection) => {
+    setClickedP(clickedSection);
+  };
+
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
@@ -41,10 +47,14 @@ const Main = () => {
         return <Nombre />;
       case 'groupement':
         return <Configuration />;
+      case 'user':
+        return <User />;
       case 'destinataire':
         return <Destinataire />;
+      case 'home':
+        return <Welcome onWelcomeClick={handleWelcomeClick} />
       default:
-        return <Welcome/>;
+        return <Welcome onWelcomeClick={handleWelcomeClick} />;
     }
   };
 
@@ -53,7 +63,7 @@ const Main = () => {
       <header>
         <div className='poste'></div>
         <div
-          onClick={toggleDropdown}
+          onMouseEnter={toggleDropdown}
           className={`user-dropdown ${showDropdown ? 'active' : ''}`}
         >
           {showDropdown && (
@@ -68,39 +78,38 @@ const Main = () => {
 
       <div className="content-container">
         <aside className="sidebar">
+        <div onClick={() => handleClickedP('home')} > home</div>
           <div onMouseEnter={() => handleMouseEnter('depot')} onMouseLeave={handleMouseLeave}>
             Depot
-          {clickedDiv === 'depot' && (
-            <>
-              <p onClick={() => handleClickedP('Particulier')}>Particulier</p>
-              <p onClick={() => handleClickedP('nombre')}>En nombre</p>
-            </>
-          )}
-           </div>
+            {clickedDiv === 'depot' && (
+              <>
+                <p onClick={() => handleClickedP('Particulier')}>Particulier</p>
+                <p onClick={() => handleClickedP('nombre')}>En nombre</p>
+              </>
+            )}
+          </div>
           <div onMouseEnter={() => handleMouseEnter('operation')} onMouseLeave={handleMouseLeave}>
             Operation
           </div>
           <div onMouseEnter={() => handleMouseEnter('edition')} onMouseLeave={handleMouseLeave}>
             Edition
-          
-          {clickedDiv === 'edition' && (
-            <>
-              <p>Registre</p>
-              <p>F12</p>
-              <p>Etats</p>
-            </>
-          )}
+            {clickedDiv === 'edition' && (
+              <>
+                <p>Registre</p>
+                <p>F12</p>
+                <p>Etats</p>
+              </>
+            )}
           </div>
           <div onMouseEnter={() => handleMouseEnter('configuration')} onMouseLeave={handleMouseLeave}>
             Configuration
-          
-          {clickedDiv === 'configuration' && (
-            <>
-              <p onClick={() => handleClickedP('groupement')}>Groupement</p>
-              <p>Utilisateurs</p>
-              <p onClick={() => handleClickedP('destinataire')}>Destinataires</p>
-            </>
-          )}
+            {clickedDiv === 'configuration' && (
+              <>
+                <p onClick={() => handleClickedP('groupement')}>Groupement</p>
+                <p onClick={() => handleClickedP('user')}>Utilisateurs</p>
+                <p onClick={() => handleClickedP('destinataire')}>Destinataires</p>
+              </>
+            )}
           </div>
           <div className='sidebarshow'> ☰ </div>
         </aside>

@@ -4,7 +4,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to right,rgb(37,37,104),rgb(208,24,36,0.7),rgb(251,241,8));
     padding: 5px;
 }
 

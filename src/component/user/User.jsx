@@ -1,18 +1,30 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import './user.css';
+import NewUser from './newUser';
 
 const User = () => {
-  const navigate = useNavigate('')
-  const newUser = () => {
-    navigate('/newUser')
-  }
+  const [showUserList, setShowUserList] = useState(true);
+
+  const toggleUserList = () => {
+    setShowUserList(!showUserList);
+  };
 
   return (
-    <div>
-        <div><h1>user list</h1></div> 
-        <button onClick={newUser}>add User</button>
-    </div>
-  )
-}
+    <div className='user-container'>
+      {showUserList ? (
+        <div className='user-list'>userLists</div>
+      ) : (
+        <NewUser />
+      )}
 
-export default User
+      <div className='buttons'>
+        <button onClick={toggleUserList}>
+          {showUserList ? 'add user' : 'save'}
+        </button>
+
+      </div>
+    </div>
+  );
+};
+
+export default User;

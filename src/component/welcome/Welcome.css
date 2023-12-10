@@ -1,31 +1,78 @@
 .welcome{
-    background-image: url('../../assets/Welcome.png');
     height: 70vh;
-    width : 100vh;
+    width : 100vw;
     background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    animation: fadeInDown 3s ease-in-out;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255,0.5);
 }
 
-@keyframes fadeInDown {
-    0%{
-        opacity: 0;
-        transform: translatey(-100%);
+.welcome div{
+    padding: 10px;
+    margin: 10px;
+    height: 50vh;
+    background-color: rgb(184, 184, 184);
+    width: 20vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.welcome div:hover{
+    background-color: rgb(71, 71, 71);
+    color: rgb(255, 255, 255);
+}
+ .welcome h1{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px;
+    margin: 10px;
+    transition: 0.5s ease;
+ }
+ 
+ .welcome h1:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: rgb(0, 0, 0,0.8);
+    color: white;
+    border-radius: 20px;
+ }
+
+ @keyframes fadeInDown {
+    from{
+        transform: translateY(100vh);
     }
-    50%{
-        opacity: 0.7;
-        transform: translateY(25%);
-    }
-    75%{
-        opacity: 0.9;
-        transform: translateY(-40%);
-        transform: scale(1.2);
-    }
-    100%{
-        opacity: 1;
+    to{
         transform: translateY(0);
     }
-}
+ }
+
+ @keyframes fadeInUp {
+    from{
+        transform: translateY(-100vh);
+    }
+    to{
+        transform: translateY(0);
+    }
+ }
+
+ .fadeinup{
+    animation : fadeInDown 1.5s ease-in-out
+ }
+
+ .fadeindown{
+    animation: fadeInUp 1.5s ease-in-out;
+ }
+
+ .deposit{
+    animation: fadeInUp 1.5s ease-in-out;
+    background-image: url('../../assets/deposit.png');
+    background-position: 50% 50%;
+ }

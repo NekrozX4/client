@@ -37,6 +37,7 @@
     color : rgb(114, 114, 114);
     margin-left: -10vw;
     transition: 0.3s  ease-in-out;
+    margin-top: 1.1vh;
 }
   .sidebar:hover {
     transform: translateX(10vw);
