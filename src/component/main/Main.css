@@ -24,7 +24,7 @@
   .content-container {
     display: flex;
     flex: 1;
-    margin-top: 5vh; 
+    margin-top: 8vh; 
   }
   .sidebar div p{
     transition: 0.2s ease-in-out;
