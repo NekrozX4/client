@@ -19,7 +19,7 @@ const Destinataire = () => {
           <input type='text' placeholder='Nom' />
           <input type='text' placeholder='Prenom' />
           <input type='text' placeholder='Adresse' />
-          <button>Send</button>
+          <button>envoi</button>
         </div>
       </div>
     </div>
