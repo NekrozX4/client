@@ -1,5 +1,6 @@
 .input-container {
     display: flex;
+    margin: 5vh;
   }
   
   .input-group {
@@ -63,3 +64,8 @@
   .send-button-container div button{
     margin-top: -3vh;
   }
+
+  .input-group button{
+    margin-top: -3vh;
+    margin-left: -10vw;
+  } 

@@ -78,3 +78,9 @@
     background-image: url('../../assets/edit.png');
     background-position: 50% 50%;
  }
+
+ .operation{
+    animation: fadeInDown 1.5s ease-in-out;
+    background-image: url('../../assets/operation.png');
+    background-position: 50% 50%;
+ }
