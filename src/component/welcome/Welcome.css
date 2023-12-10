@@ -64,15 +64,17 @@
  }
 
  .fadeinup{
-    animation : fadeInDown 1.5s ease-in-out
- }
-
- .fadeindown{
-    animation: fadeInUp 1.5s ease-in-out;
+    animation: fadeInDown 1.5s ease-in-out;
  }
 
  .deposit{
     animation: fadeInUp 1.5s ease-in-out;
     background-image: url('../../assets/deposit.png');
+    background-position: 50% 50%;
+ }
+
+ .edit{
+    animation: fadeInUp 1.5s ease-in-out;
+    background-image: url('../../assets/edit.png');
     background-position: 50% 50%;
  }

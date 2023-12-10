@@ -47,7 +47,7 @@ const Welcome = ({ onWelcomeClick }) => {
       </div>
 
       <div 
-        className='fadeindown'
+        className='edit'
         onMouseEnter={() => handleMouseEnter('edition')}
         onMouseLeave={handleMouseLeave}
       >
