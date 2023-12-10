@@ -1,0 +1,206 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #686767;
+    color: rgb(2, 2, 2);
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    z-index: 1000; /* Set a higher z-index to ensure it stays above other elements */
+    display: flex;
+    align-items: center;
+    border : none;
+    height: 8vh;
+  }
+  
+  .content-container {
+    display: flex;
+    flex: 1;
+    margin-top: 8vh; /* Adjust this margin to prevent content from being hidden under the fixed header */
+  }
+  .sidebar div p{
+    transition: 0.2s ease-in-out;
+  }
+  .sidebar {
+    margin-top: 0vh;;
+    background-color: #F8F9FA ;
+    padding: 10px;
+    min-width: 10vw; 
+    color : rgb(114, 114, 114);
+    margin-left: -10vw;
+    transition: 0.3s  ease-in-out;
+}
+  .sidebar:hover {
+    transform: translateX(10vw);
+    cursor: pointer;
+    background-color:  #E2E6EA;
+    color: black;
+  }
+  .content {
+    flex: 1;
+    padding: 10px;
+    background-color: #d6d4d4;
+    color : rgb(0, 0, 0);
+    width: 100vw;
+    margin-right: -10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .logout {
+    margin-left: auto; 
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+li {
+    cursor: pointer;
+    padding: 10px;
+}
+
+li:hover {
+    background-color: rgba(73, 73, 71, 0.6);
+    color : rgb(255, 255, 255)
+}
+
+.sidebar > div {
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+}
+.sidebar > div:hover{
+  background-color: rgba(73, 73, 71, 0.2);
+}
+
+.sidebar p {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  height: 3vh;
+}
+
+.sidebar p:hover {
+  background-color: rgba(88, 87, 87, 0.4);
+}
+.sidebar-toggle {
+  cursor: pointer;
+  font-size: 24px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar-hidden {
+  margin-left: -200px; /* Adjust the width of your sidebar */
+}
+
+.poste{
+  background-image: url('../../assets/poste.png');
+  height: 7vh;
+  width: 7vw;
+  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.user-dropdown {
+  position: relative;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: 5vw;
+  background-image: url('../../assets/user.png');
+  height: 5vh;
+  width : 2.6vw;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  background-position: 50% 0;
+  background-color: beige;
+  transition: 0.3s ease-in-out;
+}
+.user-dropdown:hover{
+  transform: scale(1.1);
+}
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  background-color: #dbdbdb; /* Set your dropdown background color */
+  box-shadow: 0 2px 4px rgba(235, 231, 231, 0.1); /* Optional: Add a box shadow for a subtle effect */
+  z-index: 1;
+  padding: 10px;
+  height: max-content;
+  width: 10vw;
+  margin-left: -5vw;
+  margin-top: -1vh;
+  border-radius: 10px;
+}
+.dropdown-content div{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 10px;
+}
+
+.dropdown-content div:hover{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.user-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content button {
+  display: block;
+  width: 100%;
+  padding: 10;
+  text-align: left;
+  border: none;
+  background: none;
+  color: #333; /* Set your text color */
+  cursor: pointer;
+}
+
+.welcome{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.sidebar {
+  /* ... existing styles ... */
+  position: relative;
+}
+
+.sidebarshow {
+  /* Additional styles for the sidebarshow */
+  position: absolute;
+  top: 45%;
+  color: rgb(255, 255, 255);
+  font-weight: bolder;
+  right: -20px; /* Adjust the value to control how much it extends */
+  background-color: #8b8b8b; /* Set a background color */
+  padding: 5px; /* Add padding for better appearance */
+  cursor: pointer; /* Add cursor style to indicate it's clickable */
+  transform: translateY(-50%); /* Center vertically */
+  display: block; /* Make it visible by default */
+  z-index: 1; /* Ensure it stays above other elements */
+}
+
+.sidebar:hover .sidebarshow {
+  display: block; /* Show sidebarshow only when the sidebar is hovered */
+}

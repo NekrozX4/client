@@ -1,0 +1,31 @@
+.welcome{
+    background-image: url('../../assets/Welcome.png');
+    height: 70vh;
+    width : 100vh;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    animation: fadeInDown 3s ease-in-out;
+}
+
+@keyframes fadeInDown {
+    0%{
+        opacity: 0;
+        transform: translatey(-100%);
+    }
+    50%{
+        opacity: 0.7;
+        transform: translateY(25%);
+    }
+    75%{
+        opacity: 0.9;
+        transform: translateY(-40%);
+        transform: scale(1.2);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

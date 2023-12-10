@@ -1,0 +1,125 @@
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../../assets/post_office.jpg');
+    background-size: cover;
+  }
+  
+  .login-container {
+    display: flex;
+    height: fit-content;
+    width: 70vw;
+    border: none;
+    background-color: none;
+    border-radius: 10px;
+  }
+  
+  .login-section {
+    flex: 1; /* Take up all available space */
+    padding: 20px;
+    background-color: rgb(0, 0, 0,0.6); /* Add padding as needed */
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color : white;
+  }
+  
+  .about-section {
+    flex: 2; /* Take up all available space */
+    padding: 20px; /* Add padding as needed */
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background: linear-gradient(to right,rgb(37,37,104,0.7),rgb(251,241,8,0.7),rgb(208,24,36,0.7));
+  }
+  
+  /* Style for login form elements */
+  .login-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    
+  }
+  
+  .login-section h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    color: #ffffff;
+    
+  }
+
+  .login-section button {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+  button{
+    height : 5vh;
+    width : 10vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius:10px;
+    background-color: rgb(151,145,151);
+    color: #020202;
+    font-weight: bolder;
+    font-size: 20px;
+    transition: 0.3s ease;
+  }
+
+  input{
+    background-color: rgb(255, 255, 255,0.5);
+    border: none;
+    border-radius: 5px;
+    height : 5vh;
+    width : 20vw;
+  }
+  
+  button:hover{
+    cursor: pointer;
+    background-color: rgb(85,77,86);
+    transform: scale(0.9);
+    color: white;
+  }
+  /* Add any additional styles for your 'About' section */
+  .about-section {
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: contain;
+    position : 50% -50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-position: 50% 0;
+  }
+  
+  .hide-show{
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  .login-section p {
+    left:0;
+  }
+
+  .login-section input::placeholder {
+    text-align: center;
+    font-style: italic;
+  }
+
+  .about-image{
+    background-image: url('../../assets/poste.png');
+    height: 30vh;
+    width: 30vw;
+    z-index: 2;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50% 50%;
+  }
