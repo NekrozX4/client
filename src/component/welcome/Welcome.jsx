@@ -26,11 +26,11 @@ const Welcome = ({ onWelcomeClick }) => {
       >
         {isSectionActive('depot') ? (
           <>
-            <h1 onClick={() => onWelcomeClick('Particulier')}>Particulier</h1>
-            <h1 onClick={() => onWelcomeClick('nombre')}>En Nombre</h1>
+            <h2 onClick={() => onWelcomeClick('Particulier')}>Particulier</h2>
+            <h2 onClick={() => onWelcomeClick('nombre')}>En Nombre</h2>
           </>
         ) : (
-          <h1>Depot</h1>
+          <h1>DEPOT</h1>
         )}
       </div>
 
@@ -40,9 +40,9 @@ const Welcome = ({ onWelcomeClick }) => {
         onMouseLeave={handleMouseLeave}
       >
         {isSectionActive('operations') ? (
-          <h1>coming soon</h1>
+          <h2>coming soon</h2>
         ) : (
-          <h1>Operations</h1>
+          <h1>OPERATION</h1>
         )}
       </div>
 
@@ -53,12 +53,12 @@ const Welcome = ({ onWelcomeClick }) => {
       >
         {isSectionActive('edition') ? (
           <>
-            <h1>Registre</h1>
-            <h1>F12</h1>
-            <h1>Etats</h1>
+            <h2>Registre</h2>
+            <h2>F12</h2>
+            <h2>Etats</h2>
           </>
         ) : (
-          <h1>Edition</h1>
+          <h1>EDITION</h1>
         )}
       </div>
 
@@ -69,12 +69,12 @@ const Welcome = ({ onWelcomeClick }) => {
       >
         {isSectionActive('configuration') ? (
           <>
-            <h1 onClick={() => onWelcomeClick('groupement')}>Groupement</h1>
-            <h1 onClick={() => onWelcomeClick('user')}>Utilisateur</h1>
-            <h1 onClick={() => onWelcomeClick('destinataire')}>Destinataire</h1>
+            <h2 onClick={() => onWelcomeClick('groupement')}>Groupement</h2>
+            <h2 onClick={() => onWelcomeClick('user')}>Utilisateur</h2>
+            <h2 onClick={() => onWelcomeClick('destinataire')}>Destinataire</h2>
           </>
         ) : (
-          <h1>Configuration</h1>
+          <h1>CONFIGURATION</h1>
         )}
       </div>
     </div>

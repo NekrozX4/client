@@ -7,7 +7,7 @@ const Destinataire = () => {
       <h1>Destinataire</h1>
 
       <div className='input-container'>
-        <div className='input-group'>
+        <div className='fory'>
           <button>client</button>
           <button>Select One</button>
           <button>Send</button>

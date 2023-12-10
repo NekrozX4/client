@@ -38,6 +38,7 @@
     margin-left: -10vw;
     transition: 0.3s  ease-in-out;
     margin-top: 1.1vh;
+    position: fixed;
 }
   .sidebar:hover {
     transform: translateX(10vw);
@@ -191,10 +192,10 @@ li:hover {
   /* Additional styles for the sidebarshow */
   position: absolute;
   top: 45%;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   font-weight: bolder;
-  right: -20px; /* Adjust the value to control how much it extends */
-  background-color: #8b8b8b; /* Set a background color */
+  right: -17px; /* Adjust the value to control how much it extends */
+  background-color: transparent; /* Set a background color */
   padding: 5px; /* Add padding for better appearance */
   cursor: pointer; /* Add cursor style to indicate it's clickable */
   transform: translateY(-50%); /* Center vertically */

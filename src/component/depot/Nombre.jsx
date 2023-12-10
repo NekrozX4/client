@@ -18,7 +18,7 @@ const Nombre = () => {
           <input className='bottom-input'type="text" placeholder="Adress" />
         </div>
       </div>
-      <div className="send-button-container">
+      <div className="button-container">
         <button>Send</button>
       </div>
     </div>
