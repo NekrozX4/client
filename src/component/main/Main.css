@@ -24,7 +24,7 @@
   .content-container {
     display: flex;
     flex: 1;
-    margin-top: 8vh; /* Adjust this margin to prevent content from being hidden under the fixed header */
+    margin-top: 5vh; 
   }
   .sidebar div p{
     transition: 0.2s ease-in-out;
