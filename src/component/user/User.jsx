@@ -12,7 +12,7 @@ const User = () => {
   return (
     <div className='user-container'>
       {showUserList ? (
-        <div className='user-list'>userLists</div>
+        <div className='user-list'>UserLists</div>
       ) : (
         <NewUser />
       )}
