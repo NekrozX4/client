@@ -14,9 +14,14 @@ const Main = () => {
   const [clickedDiv, setClickedDiv] = useState(null);
   const [clickedP, setClickedP] = useState(null);
   const [showDropdown, setShowDropdown] = useState(false);
-
+  const [searchTerm, setSearchTerm] = useState('');
+  
   const logout = () => {
     navigate('/');
+  };
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
   };
 
   const handleMouseEnter = (section) => {
@@ -38,6 +43,13 @@ const Main = () => {
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    // Handle search submission logic if needed
+    console.log('Search submitted:', searchTerm);
+  };
+
 
   const renderContent = () => {
     switch (clickedP) {
@@ -62,6 +74,21 @@ const Main = () => {
     <div className="container">
       <header>
         <div className='poste'></div>
+        <div className="search-bar">
+          <form onSubmit={handleSearchSubmit}>
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchTerm}
+              onChange={handleSearchChange}
+            />
+            <button type="submit">
+              <span role="img" aria-label="Search">
+                🔍
+              </span>
+            </button>
+          </form>
+        </div>
         <div
           onMouseEnter={toggleDropdown}
           className={`user-dropdown ${showDropdown ? 'active' : ''}`}

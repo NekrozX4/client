@@ -66,6 +66,7 @@
   }
 
   .input-group button{
-    margin-top: -3vh;
-    margin-left: -10vw;
+    margin-top: -10vh;
+    margin-bottom: 1vh;
+    margin-left: -12vw;
   } 

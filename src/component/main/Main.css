@@ -204,5 +204,39 @@ li:hover {
 }
 
 .sidebar:hover .sidebarshow {
-  display: block; /* Show sidebarshow only when the sidebar is hovered */
+  display: block;
+}
+.search-bar {
+  margin-right: auto; 
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.search-bar form {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  margin-right: 5px;
+  width: 50vw;
+
+}
+
+.search-bar button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  margin-left: -2vw;
+  width: 1vw;
+}
+.search-bar button:hover{
+  background-color: transparent;
+  transform: scale(1.2);
+  border: none;
 }

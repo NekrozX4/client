@@ -21,14 +21,14 @@ const Depot = () => {
       </div>
       <div className="input-container" >
         <div className="input-group" >
-        <button>Envoi</button>
+        <button className='depot-butt'>Envoi</button>
         <input type = 'number' placeholder='numero'/>
         <input type = 'number' placeholder='montant' />
         <input className='bottom-input' type = 'text' placeholder='poids' />
       </div>
       <div>
       <div className="input-group">
-        <button>AR</button>
+        <button className='depot-butt'>AR</button>
         <input type = 'text' placeholder='nom'/>
         <input type = 'text' placeholder='Rue et Num' />
         <input  className='bottom-input' type = 'text' placeholder='Localite et pays' />
