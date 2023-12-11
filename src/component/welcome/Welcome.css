@@ -28,6 +28,7 @@
 .welcome div:hover{
     background-color: rgb(71, 71, 71);
     color: rgb(255, 255, 255);
+    animation-play-state: paused;
 }
  .welcome h1{
     justify-content: center;
@@ -81,25 +82,37 @@
  }
 
  .fadeinup{
-    animation: fadeInDown 1.5s ease-in-out;
+    animation: fadeInDown 2.5s forwards, upDownAnimation 2s infinite alternate;
     background-image: url('../../assets/config.png');
     background-position: 45% 50%;
  }
 
  .deposit{
-    animation: fadeInUp 1.5s ease-in-out;
+    animation: fadeInUp 2.5s forwards, downUpAnimation 2s infinite alternate;
     background-image: url('../../assets/deposit.png');
     background-position: 50% 50%;
  }
 
  .edit{
-    animation: fadeInUp 1.5s ease-in-out;
+    animation: fadeInUp 2.5s forwards, downUpAnimation 2s infinite alternate;
     background-image: url('../../assets/edit.png');
     background-position: 50% 50%;
  }
 
  .operation{
-    animation: fadeInDown 1.5s ease-in-out;
+    animation: fadeInDown 2.5s forwards, upDownAnimation 2s infinite alternate;
     background-image: url('../../assets/operation.png');
     background-position: 50% 50%;
+ }
+
+ @keyframes upDownAnimation {
+   to {
+     transform: translateY(-15px); /* Adjust the distance based on your preference */
+   }
+ }
+
+ @keyframes downUpAnimation {
+   to{
+      transform: translateY(15px)
+   }
  }

@@ -39,6 +39,7 @@
     transition: 0.3s  ease-in-out;
     margin-top: 1.1vh;
     position: fixed;
+    z-index: 999;
 }
   .sidebar:hover {
     transform: translateX(10vw);
