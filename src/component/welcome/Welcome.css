@@ -10,25 +10,25 @@
     border-radius: 20px;
 }
 
-.welcome div{
-    padding: 10px;
-    margin: 10px;
-    height: 50vh;
-    background-color: rgb(184, 184, 184);
-    width: 20vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    border-radius: 40px;
-    cursor: pointer;
-    transition: 0s ease-in-out;
+.welcome div {
+   padding: 10px;
+   margin: 10px;
+   height: 50vh;
+   background-color: rgb(184, 184, 184);
+   width: 20vw;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   border-radius: 40px;
+   cursor: pointer;
+   transition: 0s ease-in-out;
+   animation: fadeInDown 2s forwards;
 }
 
 .welcome div:hover{
     background-color: rgb(71, 71, 71);
     color: rgb(255, 255, 255);
-    animation-play-state: paused;
 }
  .welcome h1{
     justify-content: center;
@@ -82,37 +82,29 @@
  }
 
  .fadeinup{
-    animation: fadeInDown 2.5s forwards, upDownAnimation 2s infinite alternate;
     background-image: url('../../assets/config.png');
     background-position: 45% 50%;
  }
 
  .deposit{
-    animation: fadeInUp 2.5s forwards, downUpAnimation 2s infinite alternate;
     background-image: url('../../assets/deposit.png');
     background-position: 50% 50%;
  }
 
  .edit{
-    animation: fadeInUp 2.5s forwards, downUpAnimation 2s infinite alternate;
     background-image: url('../../assets/edit.png');
     background-position: 50% 50%;
  }
 
  .operation{
-    animation: fadeInDown 2.5s forwards, upDownAnimation 2s infinite alternate;
     background-image: url('../../assets/operation.png');
     background-position: 50% 50%;
  }
-
- @keyframes upDownAnimation {
+ @keyframes fadeInDown {
+   from {
+       transform: translateX(100vw);
+   }
    to {
-     transform: translateY(-15px); /* Adjust the distance based on your preference */
+       transform: translateX(0);
    }
- }
-
- @keyframes downUpAnimation {
-   to{
-      transform: translateY(15px)
-   }
- }
+}

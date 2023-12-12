@@ -33,8 +33,9 @@ const Main = () => {
   };
 
   const handleClickedP = (p) => {
-    setClickedP(p === clickedP ? null : p);
+    setClickedP(p);
   };
+
 
   const handleWelcomeClick = (clickedSection) => {
     setClickedP(clickedSection);

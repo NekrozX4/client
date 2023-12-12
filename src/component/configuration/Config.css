@@ -1,41 +1,42 @@
-.config-container{
+.custom-config-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-color: rgb(0, 0, 0,0.6);
+    justify-content: space-between;
     padding: 20px;
-    background-repeat: no-repeat;
-    border-radius: 10px;
-}
-
-.config-container input {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: rgb(155, 154, 154);
-    padding: 5px;
-    margin: 20px;
-    font-size: 13.5px;
-    margin-top: 5px;
-}
-.config-main-container h1{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.config-container button{
+    margin-right: 20vw;
+  }
+  
+  .custom-form-container {
+    width: 45%;
+  }
+  
+  .custom-list-container {
+    width: 45%;
+  }
+  
+  .custom-form-element {
+    margin-bottom: 15px;
+  }
+  
+  .custom-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .custom-input {
+    width: 100%;
+    padding: 8px;
+  }
+  
+  .custom-table {
+    width: 100%;
+    border-collapse: collapse;
     margin-top: 20px;
-    transition: 0.5s;
-}
-
-.config-container button:hover{
-    transform: scale(0.9);
-}
-
-.config-container input::placeholder{
-    color: white;
-    font-weight: lighter;
-    font-style: italic;
-}
+  }
+  
+  .custom-table th,
+  .custom-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  

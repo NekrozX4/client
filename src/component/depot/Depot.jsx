@@ -5,6 +5,7 @@ const Depot = () => {
   return (
     <div>
       <h1>Particulier</h1>
+      <h2 className='history'>Historiques</h2>
       <div className="input-container">
         <div className="input-group">
           <h2>Expediteur</h2>
