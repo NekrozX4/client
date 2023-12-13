@@ -22,35 +22,36 @@ function User() {
   };
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prevFormData) => ({
+      ...prevFormData,
       [name]: value,
-    });
+    }));
   };
+  
 
-  const handleAddUser = () => {
-    axios.post("http://localhost:8081/utilisateur", formData)
-      .then((res) => {
-        console.log("User added successfully:", res.data);
-        // Update state with the new user
-        setUsers([...users, res.data]);
-        // Reset form data
-        setFormData({
-          Us_nom: "",
-          Us_matricule: "",
-          Us_login: "",
-          Us_mail: "",
-          Us_pwd: "",
-          Fo_id: 0,
-          Grp_id: 0,
-        });
-        // Fetch updated data
-        fetchData(); // Assuming this function fetches the list of users
-      })
-      .catch((err) => {
-        console.error("Error adding user:", err);
+  const handleAddUser = async () => {
+    try {
+      const res = await axios.post("http://localhost:8081/utilisateur", formData);
+      console.log("User added successfully:", res.data);
+      // Update state with the new user
+      setUsers([...users, res.data]);
+      // Reset form data
+      setFormData({
+        Us_nom: "",
+        Us_matricule: "",
+        Us_login: "",
+        Us_mail: "",
+        Us_pwd: "",
+        Fo_id: "" ,
+        Grp_id: "" ,
       });
+      // Fetch updated data
+      fetchData(); // Assuming this function fetches the list of users
+    } catch (err) {
+      console.error("Error adding user:", err);
+    }
   };
+  
   useEffect(() => {
     fetchData();
   }, [users]);
@@ -142,6 +143,34 @@ function User() {
               onChange={handleInputChange}
             />
           </div>
+          <div className="custom-form-element">
+  <label htmlFor="Fo_id" className="custom-label">
+    Formation ID
+  </label>
+  <input
+    type="text"
+    className="custom-input"
+    id="Fo_id"
+    name="Fo_id"
+    value={formData.Fo_id}
+    onChange={handleInputChange}
+  />
+</div>
+
+<div className="custom-form-element">
+  <label htmlFor="Grp_id" className="custom-label">
+    Group ID
+  </label>
+  <input
+    type="text"
+    className="custom-input"
+    id="Grp_id"
+    name="Grp_id"
+    value={formData.Grp_id}
+    onChange={handleInputChange}
+  />
+</div>
+
 
           <button type="button" className="custom-primary-button" onClick={handleAddUser}>
             Add User
