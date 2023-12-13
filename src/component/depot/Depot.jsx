@@ -11,42 +11,51 @@ const Depot = () => {
   const [montant, setMontant] = useState('');
   const [poids, setPoids] = useState('');
 
+  const [envDate, setEnvDate] = useState(''); // Added state for Env_date_depot
+
   const handleEnvoiClick = async () => {
     // Verify if expediteur exists in beneficiaire table
     const expediteurExists = await verifyBeneficiaire(expediteurName, expediteurAddress);
-
+  
     if (!expediteurExists) {
       alert('Expediteur not found in beneficiaire table');
       return;
     }
-
+  
     // Verify if destinataire exists in beneficiaire table
     const destinataireExists = await verifyBeneficiaire(destinataireName, destinataireAddress);
-
+  
     if (!destinataireExists) {
       alert('Destinataire not found in beneficiaire table');
       return;
     }
-
+  
+    // Get the current date and format it as "YYYY-MM-DD HH:MM:SS"
+    const currentDate = new Date();
+    const formattedDate = currentDate.toISOString().slice(0, 19).replace('T', ' '); // Format the date
+  
     // If both expediteur and destinataire exist, send data to envoi table
     const envoiData = {
       Env_num: numero,
       Env_poids: poids,
       Env_exp: expediteurName,
       Env_dest: destinataireName,
+      Env_date_depot: formattedDate,
       // Add other properties as needed
     };
-
+  
     // Call a function to send the envoi data to the server or handle it accordingly
     sendEnvoiData(envoiData);
   };
+  
 
   const verifyBeneficiaire = async (name, address) => {
     try {
       const response = await fetch(`http://localhost:8081/benefs?Ben_Nom=${name}&Ben_Addresse=${address}`);
       const beneficiaireData = await response.json();
-    
-      return beneficiaireData.length > 0; // Check if beneficiaire exists
+  
+      // Check if beneficiaire with the given name and address exists
+      return beneficiaireData && beneficiaireData.length > 0;
     } catch (error) {
       console.error('Error verifying beneficiaire:', error);
       return false; // Handle error accordingly
@@ -75,6 +84,7 @@ const Depot = () => {
       // Handle error accordingly
     }
   };
+
 
   return (
     <div>
