@@ -27,14 +27,6 @@ const Depot = () => {
         <input type = 'number' placeholder='montant' />
         <input className='bottom-input' type = 'text' placeholder='poids' />
       </div>
-      <div>
-      <div className="input-group">
-        <button className='depot-butt'>AR</button>
-        <input type = 'text' placeholder='nom'/>
-        <input type = 'text' placeholder='Rue et Num' />
-        <input  className='bottom-input' type = 'text' placeholder='Localite et pays' />
-      </div>
-      </div>
           </div>
     </div>
   );

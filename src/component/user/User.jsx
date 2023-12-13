@@ -187,7 +187,6 @@ function User() {
               <th>Matricule</th>
               <th>Login</th>
               <th>Email</th>
-              <th>Password</th>
               <th>Fo_id</th>
               <th>Grp_id</th>
               <th>Action</th>
@@ -200,7 +199,6 @@ function User() {
                 <td>{user.Us_matricule}</td>
                 <td>{user.Us_login}</td>
                 <td>{user.Us_mail}</td>
-                <td>{user.Us_pwd}</td>
                 <td>{user.Fo_id}</td>
                 <td>{user.Grp_id}</td>
                 <td>

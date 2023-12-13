@@ -44,6 +44,9 @@ const Main = () => {
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
+  const toogleLeave = () => {
+    setShowDropdown(null)
+  }
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
@@ -75,6 +78,7 @@ const Main = () => {
     <div className="container">
       <header>
         <div className='poste'></div>
+        <div className='home' onClick={() => handleClickedP('home')}></div>
         <div className="search-bar">
           <form onSubmit={handleSearchSubmit}>
             <input
@@ -92,6 +96,7 @@ const Main = () => {
         </div>
         <div
           onMouseEnter={toggleDropdown}
+          onMouseLeave={toogleLeave}
           className={`user-dropdown ${showDropdown ? 'active' : ''}`}
         >
           {showDropdown && (

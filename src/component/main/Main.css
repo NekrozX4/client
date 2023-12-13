@@ -112,12 +112,27 @@ li:hover {
 
 .poste{
   background-image: url('../../assets/poste.png');
+  height: 9vh;
+  width: 9vw;
+  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.home{
+  background-image: url('../../assets/Home.png');
   height: 7vh;
   width: 7vw;
   background-color: transparent;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 50% 50%;
+  transition: 0.5s ease-in-out;
+}
+.home:hover{
+  cursor: pointer;
+  transform: scale(1.2);
 }
 
 .user-dropdown {

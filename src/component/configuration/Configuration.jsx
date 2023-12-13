@@ -5,6 +5,9 @@ import './Config.css'; // Import the CSS file
 
 function Configuration() {
   const [groups, setGroups] = useState([]);
+  const [selectedGroupId, setSelectedGroupId] = useState(null);
+
+
   const [formData, setFormData] = useState({
     Grp_nom: "",
     Grp_code: "",
@@ -78,6 +81,45 @@ function Configuration() {
       .then((res) => setGroups(res.data))
       .catch((err) => console.log("Error fetching data:", err));
   }, []);
+
+  const handleUpdateGroup = () => {
+    if (!selectedGroupId) {
+      console.error("No group selected for update");
+      return;
+    }
+
+    axios.put(`http://localhost:8081/groupement/${selectedGroupId}`, formData)
+      .then((res) => {
+        console.log("Group updated successfully:", res.data);
+        fetchData();
+        setFormData({
+          Grp_nom: "",
+          Grp_code: "",
+          Grp_adresse: "",
+          Grp_responsable: "",
+          Grp_contact: "",
+          Grp_type: "",
+          Grp_mail: "",
+        });
+        setSelectedGroupId(null);
+      })
+      .catch((err) => {
+        console.error("Error updating group:", err);
+      });
+  };
+
+  const handleEditGroup = (group) => {
+    setFormData({
+      Grp_nom: group.Grp_nom,
+      Grp_code: group.Grp_code,
+      Grp_adresse: group.Grp_adresse,
+      Grp_responsable: group.Grp_responsable,
+      Grp_contact: group.Grp_contact,
+      Grp_type: group.Grp_type,
+      Grp_mail: group.Grp_mail,
+    });
+    setSelectedGroupId(group.Grp_id);
+  };
 
   return (
     <div className="custom-config-container"> {/* Updated class name */}
@@ -164,8 +206,11 @@ function Configuration() {
             />
           </div>
 
-          <button type="button" className="custom-primary-button" onClick={handleAddGroup}>
+          <button type="button" className="change" onClick={handleAddGroup}>
             Add Group
+          </button>
+          <button type="button" className="change" onClick={handleUpdateGroup}>
+            Update Group
           </button>
         </form>
       </div>
@@ -177,28 +222,31 @@ function Configuration() {
           <thead>
             <tr>
               <th>Nom</th>
-              <th>Type</th>
               <th>Code</th>
               <th>Adresse</th>
-              <th>Téléphone</th>
-              <th>Email</th>
+              <th>Responsable</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {groups.map((group) => (
               <tr key={group.Grp_id}>
                 <td>{group.Grp_nom}</td>
-                <td>{group.Grp_type}</td>
                 <td>{group.Grp_code}</td>
                 <td>{group.Grp_adresse}</td>
-                <td>{group.Grp_contact}</td>
-                <td>{group.Grp_mail}</td>
+                <td>{group.Grp_responsable}</td>
                 <td>
                   <button
-                    className="custom-delete-button"
+                    className="custom-button"
                     onClick={() => handleDeleteGroup(group.Grp_id)}
                   >
                     Delete
+                  </button>
+                  <button
+                    className="custom-button"
+                    onClick={() => handleEditGroup(group)}
+                  >
+                    Edit
                   </button>
                 </td>
               </tr>
