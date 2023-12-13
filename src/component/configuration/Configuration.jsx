@@ -98,8 +98,6 @@ function Configuration() {
             />
           </div>
 
-          {/* Add other input fields for Grp_code, Grp_adresse, Grp_responsable, Grp_contact, Grp_type */}
-          
           <div className="custom-form-element">
             <label htmlFor="Grp_code" className="custom-label">
             </label>
