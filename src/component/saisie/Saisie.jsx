@@ -1,5 +1,5 @@
+// Main.jsx
 import React, { useState } from 'react';
-import '../main/Main.css';
 import { useNavigate } from 'react-router-dom';
 import Depot from '../depot/Depot';
 import Nombre from '../depot/Nombre';
@@ -8,17 +8,14 @@ import Destinataire from '../destinataire/Destinataire';
 import Configuration from '../configuration/Configuration';
 import Welcome from '../welcome/Welcome';
 import Historique from '../historique/Historique';
-import GroupDetail from '../group_detail/GroupDetail';
 
-const Main = () => {
+const Saisie= () => {
   const navigate = useNavigate();
   const [clickedDiv, setClickedDiv] = useState(null);
   const [clickedP, setClickedP] = useState(null);
   const [showDropdown, setShowDropdown] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [showHistorique, setShowHistorique] = useState(false);
-  const [selectedGroup, setSelectedGroup] = useState(null);
-  const [showDetail, setShowDetail] = useState(false);
+  const [showHistorique, setShowHistorique] = useState(false); 
   const logout = () => {
     navigate('/');
   };
@@ -37,8 +34,7 @@ const Main = () => {
 
   const handleClickedP = (p) => {
     setClickedP(p);
-    setShowHistorique(false);
-    setShowDetail(false);
+    setShowHistorique(false); // Reset showHistorique when clicking other sections
   };
 
   const handleWelcomeClick = (clickedSection) => {
@@ -48,10 +44,9 @@ const Main = () => {
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
-
   const toogleLeave = () => {
-    setShowDropdown(null);
-  };
+    setShowDropdown(null)
+  }
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
@@ -63,32 +58,20 @@ const Main = () => {
     setShowHistorique(true);
   };
 
-  const handleShowDetail = (group) => {
-    setSelectedGroup(group);
-    setShowDetail(true);
-  };
-
   const renderContent = () => {
     if (showHistorique) {
       return <Historique />;
-    } else if (showDetail) {
-      return <GroupDetail selectedGroup={selectedGroup} onClose={() => setShowDetail(false)} />;
     }
+
     switch (clickedP) {
       case 'Particulier':
         return <Depot onHistoryClick={handleHistoryClick} />;
       case 'nombre':
         return <Nombre />;
-      case 'groupement':
-        return <Configuration onDetailClick={handleShowDetail} />;
-      case 'user':
-        return <User />;
       case 'destinataire':
         return <Destinataire />;
-      case 'home':
-        return <Welcome onWelcomeClick={handleWelcomeClick} />;
       default:
-        return <Welcome onWelcomeClick={handleWelcomeClick} />;
+        return <h1>hey user !!</h1>;
     }
   };
 
@@ -142,26 +125,6 @@ const Main = () => {
           <div onMouseEnter={() => handleMouseEnter('operation')} onMouseLeave={handleMouseLeave}>
             Operation
           </div>
-          <div onMouseEnter={() => handleMouseEnter('edition')} onMouseLeave={handleMouseLeave}>
-            Edition
-            {clickedDiv === 'edition' && (
-              <>
-                <p>Registre</p>
-                <p>F12</p>
-                <p>Etats</p>
-              </>
-            )}
-          </div>
-          <div onMouseEnter={() => handleMouseEnter('configuration')} onMouseLeave={handleMouseLeave}>
-            Configuration
-            {clickedDiv === 'configuration' && (
-              <>
-                <p onClick={() => handleClickedP('groupement')}>Groupement</p>
-                <p onClick={() => handleClickedP('user')}>Utilisateurs</p>
-                <p onClick={() => handleClickedP('destinataire')}>Destinataires</p>
-              </>
-            )}
-          </div>
           <div className='sidebarshow'> ☰ </div>
         </aside>
 
@@ -171,4 +134,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Saisie;

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import './Config.css'; // Import the CSS file
 
-function Configuration() {
+function Configuration({onDetailClick}) {
   const [groups, setGroups] = useState([]);
   const [selectedGroupId, setSelectedGroupId] = useState(null);
 
@@ -121,6 +121,10 @@ function Configuration() {
     setSelectedGroupId(group.Grp_id);
   };
 
+  const showDetail = (group) => {
+    onDetailClick(group);
+  };
+  
   return (
     <div className="custom-config-container"> {/* Updated class name */}
       <div className="custom-form-container"> {/* Updated class name */}
@@ -225,7 +229,9 @@ function Configuration() {
               <th>Code</th>
               <th>Adresse</th>
               <th>Responsable</th>
+              <th>type</th>
               <th>Action</th>
+              <th>Details</th>
             </tr>
           </thead>
           <tbody>
@@ -235,6 +241,7 @@ function Configuration() {
                 <td>{group.Grp_code}</td>
                 <td>{group.Grp_adresse}</td>
                 <td>{group.Grp_responsable}</td>
+                <td>{group.Grp_type}</td>
                 <td>
                   <button
                     className="custom-button"
@@ -248,6 +255,9 @@ function Configuration() {
                   >
                     Edit
                   </button>
+                </td>
+                <td>
+                <button onClick={() => showDetail(group)}>voir Details</button>
                 </td>
               </tr>
             ))}

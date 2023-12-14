@@ -1,66 +1,86 @@
 import React, { useState } from 'react';
 import './Depot.css';
 
-const Depot = () => {
-  const [expediteurName, setExpediteurName] = useState('');
-  const [expediteurAddress, setExpediteurAddress] = useState('');
-  const [destinataireName, setDestinataireName] = useState('');
-  const [destinataireAddress, setDestinataireAddress] = useState('');
+const Depot = ( {onHistoryClick} ) => {
+  const [expediteurName, setExpediteurName] = useState('fita');
+  const [expediteurAddress, setExpediteurAddress] = useState('Ambohibao');
+  const [destinataireName, setDestinataireName] = useState('fita');
+  const [destinataireAddress, setDestinataireAddress] = useState('Ambohibao');
   const [destinataireTel, setDestinataireTel] = useState('');
   const [numero, setNumero] = useState('');
   const [montant, setMontant] = useState('');
   const [poids, setPoids] = useState('');
 
-  const [envDate, setEnvDate] = useState(''); // Added state for Env_date_depot
-
   const handleEnvoiClick = async () => {
+    console.log('Handling Envoi Click');
+    
     // Verify if expediteur exists in beneficiaire table
-    const expediteurExists = await verifyBeneficiaire(expediteurName, expediteurAddress);
-  
-    if (!expediteurExists) {
-      alert('Expediteur not found in beneficiaire table');
-      return;
+    try {
+      const expediteurExists = await verifyBeneficiaire(expediteurName, expediteurAddress);
+
+      console.log('Expediteur exists:', expediteurExists);
+
+      if (!expediteurExists) {
+        alert('Expediteur not found in beneficiaire table');
+        return;
+      }
+
+      // Verify if destinataire exists in beneficiaire table
+      const destinataireExists = await verifyBeneficiaire(destinataireName, destinataireAddress);
+
+      console.log('Destinataire exists:', destinataireExists);
+
+      if (!destinataireExists) {
+        alert('Destinataire not found in beneficiaire table');
+        return;
+      }
+      // Assuming Env_date_depot is a string in the format 'YYYY-MM-DD HH:mm:ss'
+      const currentDate = new Date();
+      const formattedDate = currentDate.toISOString().slice(0, 19).replace("T", " ");
+      console.log (currentDate)
+
+
+      const envoiData = {
+        Env_num: numero,
+        Env_poids: poids,
+        Env_exp: expediteurName,
+        Env_dest: destinataireName,
+        Env_date_depot: formattedDate.slice(0, 10), // Format as 'YYYY-MM-DD'
+      };
+
+      await sendEnvoiData(envoiData);
+
+      setExpediteurName('fita');
+      setExpediteurAddress('Ambohibao');
+      setDestinataireName('fita');
+      setDestinataireAddress('Ambohibao');
+      setDestinataireTel('');
+      setNumero('');
+      setMontant('');
+      setPoids('');
+    } catch (error) {
+      console.error('Error handling envoi:', error);
     }
-  
-    // Verify if destinataire exists in beneficiaire table
-    const destinataireExists = await verifyBeneficiaire(destinataireName, destinataireAddress);
-  
-    if (!destinataireExists) {
-      alert('Destinataire not found in beneficiaire table');
-      return;
-    }
-  
-    // Get the current date and format it as "YYYY-MM-DD HH:MM:SS"
-    const currentDate = new Date();
-    const formattedDate = currentDate.toISOString().slice(0, 19).replace('T', ' '); // Format the date
-  
-    // If both expediteur and destinataire exist, send data to envoi table
-    const envoiData = {
-      Env_num: numero,
-      Env_poids: poids,
-      Env_exp: expediteurName,
-      Env_dest: destinataireName,
-      Env_date_depot: formattedDate,
-      // Add other properties as needed
-    };
-  
-    // Call a function to send the envoi data to the server or handle it accordingly
-    sendEnvoiData(envoiData);
   };
-  
 
   const verifyBeneficiaire = async (name, address) => {
     try {
       const response = await fetch(`http://localhost:8081/benefs?Ben_Nom=${name}&Ben_Addresse=${address}`);
       const beneficiaireData = await response.json();
   
-      // Check if beneficiaire with the given name and address exists
-      return beneficiaireData && beneficiaireData.length > 0;
+      console.log(`Verifying ${name}:`, beneficiaireData);
+      
+      // Check if there is an exact match for the given name and address
+      return beneficiaireData.some(
+        (beneficiaire) =>
+          beneficiaire.Ben_Nom === name && beneficiaire.Ben_Addresse === address
+      );
     } catch (error) {
       console.error('Error verifying beneficiaire:', error);
       return false; // Handle error accordingly
     }
   };
+  
 
   const sendEnvoiData = async (envoiData) => {
     try {
@@ -78,18 +98,21 @@ const Depot = () => {
 
       const responseData = await response.json();
       console.log('Envoi data sent successfully', responseData);
-      // You can add additional logic here if needed
     } catch (error) {
       console.error('Error sending envoi data', error);
-      // Handle error accordingly
     }
   };
 
+  const handleHistoriqueClick = () => {
+    onHistoryClick();
+  };
 
   return (
     <div>
       <h1>Particulier</h1>
-      <h2 className='history'>Historiques</h2>
+      <h2 className='history' onClick={handleHistoriqueClick}>
+        Historiques
+      </h2>
       <div className="input-container">
         <div className="input-group">
           <h2>Expediteur</h2>

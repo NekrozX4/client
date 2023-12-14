@@ -1,0 +1,11 @@
+.historique-item{
+    background-color: rgb(167, 167, 167);
+    border : 1px solid white;
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    margin: 10px;
+}
+
+.historique-container{
+}

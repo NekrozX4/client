@@ -167,3 +167,11 @@
   .popup-content button:hover {
     background: #0056b3; /* Hover color */
   }
+  .input-error {
+    border: 1px solid red;
+  }
+  
+  .input-error::placeholder {
+    color: red;
+  }
+  
