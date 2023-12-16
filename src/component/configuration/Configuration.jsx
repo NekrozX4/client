@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import './Config.css'; // Import the CSS file
 
 function Configuration({onDetailClick}) {
@@ -16,12 +15,6 @@ function Configuration({onDetailClick}) {
     Grp_contact: "",
     Grp_type: "",
   });
-
-  const navigate = useNavigate('');
-
-  const redirect = () => {
-    navigate('/');
-  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -219,10 +212,9 @@ function Configuration({onDetailClick}) {
         </form>
       </div>
 
-      {/* Display Groups Table */}
-      <div className="custom-list-container"> {/* Updated class name */}
+      <div className="custom-list-container">
         <h2>Liste des Groupements</h2>
-        <table className="custom-table"> {/* Updated class name */}
+        <table className="custom-table"> 
           <thead>
             <tr>
               <th>Nom</th>

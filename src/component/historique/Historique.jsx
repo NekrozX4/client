@@ -38,12 +38,9 @@ const Historique = () => {
             <span>&nbsp;</span>
             <p>
             <strong>Date:</strong> {envoi.Env_date_depot && new Date(envoi.Env_date_depot).toLocaleDateString('en-US', { timeZone: 'Africa/Nairobi' })}
-<span className="separator"> | </span>
-<strong>Agence:</strong> {envoi.Env_agence_depot}
-
-
-
-            </p>
+            <span className="separator"> | </span>
+            <strong>Agence:</strong> {envoi.Env_agence_depot}
+       </p>
           </div>
         ))}
       </div>

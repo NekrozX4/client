@@ -113,6 +113,7 @@ const Depot = ( {onHistoryClick} ) => {
       <h2 className='history' onClick={handleHistoriqueClick}>
         Historiques
       </h2>
+      <button  onClick={handleEnvoiClick} >submit</button>
       <div className="input-container">
         <div className="input-group">
           <h2>Expediteur</h2>
@@ -156,9 +157,9 @@ const Depot = ( {onHistoryClick} ) => {
       </div>
       <div className="input-container">
         <div className="input-group">
-          <button className='depot-butt' onClick={handleEnvoiClick}>
+          <h1 className='depot-butt' onClick={handleEnvoiClick}>
             Envoi
-          </button>
+          </h1>
           <input
             type='text'
             placeholder='Numero'
@@ -179,6 +180,31 @@ const Depot = ( {onHistoryClick} ) => {
             onChange={(e) => setPoids(e.target.value)}
           />
         </div>
+        <div className="input-group">
+          <h1 className='depot-butt' onClick={handleEnvoiClick}>
+            Arrivee
+          </h1>
+          <input
+            type='text'
+            placeholder='Nom'
+            value={numero}
+            onChange={(e) => setNumero(e.target.value)}
+          />
+          <input
+            type='text'
+            placeholder='rue et numero'
+            value={montant}
+            onChange={(e) => setMontant(e.target.value)}
+          />
+          <input
+            className='bottom-input'
+            type='text'
+            placeholder='Localite et pays'
+            value={poids}
+            onChange={(e) => setPoids(e.target.value)}
+          />
+        </div>
+        
       </div>
     </div>
   );
