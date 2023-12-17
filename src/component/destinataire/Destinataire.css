@@ -121,7 +121,7 @@
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    margin-right: 10px;
+    width : 15vw;
   }
   
   .button-send {
@@ -139,3 +139,58 @@
     transform : scale(0.9);
     transition: 0.5s;
   }
+
+  .popup-success-popup,
+.popup-error-popup {
+  position: absolute;
+  margin-left: 10vw;
+  z-index: 9999;
+  border: none;
+}
+
+.popup-success-popup {
+  background-color: #173b0d;
+  color: white;
+  font-size: 25px;
+  padding: 10px;
+  margin: 20px;
+  margin-top: 20vh;
+  margin-left: 10vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  position: absolute;
+}
+
+.popup-error-popup {
+  /* Add styling for error popup */
+  background-color: #ff0000; /* Change the color as needed */
+  color: white;
+  font-size: 25px;
+  padding: 10px;
+  margin: 20px;
+  margin-top: 20vh;
+  margin-left: 10vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  position: absolute;
+}
+
+.popup-success-popup::before,
+.popup-error-popup::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  height: 0;
+  width: 0;
+  pointer-events: none;
+  border-color: rgba(23, 59, 13, 0);
+  border-bottom-color: #173b0d;
+  border-width: 10px;
+  margin-left: -10px;
+}

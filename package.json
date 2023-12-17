@@ -13,8 +13,10 @@
     "electron:start": "wait-on tcp:5173 && electron main.js"
   },
   "dependencies": {
+    "@types/csv-parse": "^1.2.2",
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
+    "csv-parse": "^5.5.3",
     "electron": "^28.0.0",
     "papaparse": "^5.4.1",
     "react": "^18.2.0",

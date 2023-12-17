@@ -145,7 +145,7 @@ function User() {
           </div>
           <div className="custom-form-element">
   <label htmlFor="Fo_id" className="custom-label">
-    Formation ID
+    Fonction_ID
   </label>
   <input
     type="text"
