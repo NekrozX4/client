@@ -43,3 +43,36 @@
     color: #333333; /* Example text color for light mode input */
     /* Add other light mode styles for input as needed */
   }
+
+ /* Add this to your CSS file or style section */
+.custom-select {
+    /* Style for the entire select element */
+    width: fit-content; /* Set the width as needed */
+    cursor: pointer;
+    border: none;
+    height: 5vh;
+    border-radius: 5px;
+    background-color: rgb(197, 192, 185,0.5);
+  }
+  
+  .custom-select option {
+    /* Style for each option in the dropdown */
+    background-color: #696969; /* Background color */
+    color: #fff8f8; /* Text color */
+    padding: 8px; /* Padding around the text */
+    cursor: pointer;
+  }
+  
+  .custom-select option:hover {
+    /* Style for the hovered option */
+    background-color: #f0f0f0; /* Background color on hover */
+    cursor: pointer;
+  }
+  
+  .custom-select option:selected {
+    /* Style for the selected option */
+    background-color: #8f8f8f; /* Background color of the selected option */
+    color: #fff; /* Text color of the selected option */
+    cursor: pointer;
+  }
+  

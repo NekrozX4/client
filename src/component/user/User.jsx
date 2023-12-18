@@ -28,6 +28,19 @@ function User({ lightMode })  {
     }));
   };
   
+  const mapFoIdToText = (foId) => {
+    switch (foId) {
+      case 1:
+        return "admin";
+      case 2:
+        return "saisie";
+      case 3:
+        return "verifs";
+      default:
+        return "Unknown";
+    }
+  };
+  
 
   const handleAddUser = async () => {
     try {
@@ -144,17 +157,24 @@ function User({ lightMode })  {
             />
           </div>
           <div className="custom-form-element">
+          <div className="custom-form-element">
   <label htmlFor="Fo_id" className="custom-label">
     Fonction_ID
   </label>
-  <input
-    type="text"
-    className="custom-input"
+  <select
     id="Fo_id"
     name="Fo_id"
     value={formData.Fo_id}
     onChange={handleInputChange}
-  />
+    className="custom-select"
+  >
+    <option value= "0">select Fonction</option>
+    <option value="1">admin</option>
+    <option value="2">saisie</option>
+    <option value="3">verifs</option>
+  </select>
+</div>
+
 </div>
 
 <div className="custom-form-element">
@@ -199,7 +219,7 @@ function User({ lightMode })  {
                 <td>{user.Us_matricule}</td>
                 <td>{user.Us_login}</td>
                 <td>{user.Us_mail}</td>
-                <td>{user.Fo_id}</td>
+                <td>{mapFoIdToText(user.Fo_id)}</td>
                 <td>{user.Grp_id}</td>
                 <td>
                   <button
