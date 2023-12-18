@@ -2,25 +2,59 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
+}
+
+
+/* Light Mode */
+.light-mode {
+  background-color: #ffffff;
+  color: #333;
+  /* Add other light mode styles */
+}
+  .header.light-mode{
+    background-color: #fff;
   }
   
-  header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: #686767;
-    color: rgb(2, 2, 2);
-    padding: 10px;
-    text-align: center;
-    width: 100%;
-    z-index: 1000; /* Set a higher z-index to ensure it stays above other elements */
-    display: flex;
-    align-items: center;
-    border : none;
-    height: 8vh;
+  /* Additional styles for the sidebar in light mode */
+  .sidebar.light-mode {
+    background-color: #b3b3b3; /* Example background color for light mode sidebar */
+    color: #333; /* Example text color for light mode sidebar */
   }
-  
+
+  /* Additional styles for the content in light mode */
+  .content.light-mode {
+    background: #a1a1a1; /* Example background color for light mode content */
+    color: #000000; /* Example text color for light mode content */
+  }
+
+  /* Additional styles for other elements in light mode as needed */
+
+
+
+ /* General Header Style */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background : linear-gradient(to right, rgb(63, 62, 62), rgb(0, 0, 0), rgb(46, 46, 46));
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  border: none;
+  height: 8vh;
+}
+
+/* Light Mode Header Style */
+.header.light-mode {
+  background:linear-gradient(to right, rgb(95, 95, 95), rgb(109, 100, 100));
+  color: #333;
+}
+
   .content-container {
     display: flex;
     flex: 1;
@@ -30,9 +64,9 @@
     transition: 0.2s ease-in-out;
   }
   .sidebar {
-    margin-top: 0vh;;
-    background-color: #F8F9FA ;
-    padding: 10px;
+    margin-top: 0vh;
+    background-color: #474747 ;
+    padding: 20px;
     min-width: 10vw; 
     color : rgb(114, 114, 114);
     margin-left: -10vw;
@@ -40,18 +74,23 @@
     margin-top: 1.1vh;
     position: fixed;
     z-index: 999;
+    font-family:Arial, Helvetica, sans-serif;
 }
   .sidebar:hover {
     transform: translateX(10vw);
     cursor: pointer;
-    background-color:  #E2E6EA;
+    background-color:  #575757;
+    color: rgb(255, 255, 255);
+  }
+  .sidebar.light-mode:hover{
+    background-color:#f1f1f1 ;
     color: black;
   }
   .content {
     flex: 1;
     padding: 10px;
-    background-color: #d6d4d4;
-    color : rgb(0, 0, 0);
+    background: linear-gradient(to right,rgb(54, 54, 54),rgb(37, 37, 37) 2%,rgb(24, 24, 24) 85%) ;
+    color : rgb(255, 255, 255);
     width: 100vw;
     margin-right: -10px;
     display: flex;
@@ -80,9 +119,6 @@ li:hover {
   margin: 5px;
   cursor: pointer;
 }
-.sidebar > div:hover{
-  background-color: rgba(73, 73, 71, 0.2);
-}
 
 .sidebar p {
   cursor: pointer;
@@ -95,7 +131,7 @@ li:hover {
 }
 
 .sidebar p:hover {
-  background-color: rgba(88, 87, 87, 0.4);
+  background-color: rgba(49, 49, 49, 0.4);
 }
 .sidebar-toggle {
   cursor: pointer;
@@ -158,7 +194,7 @@ li:hover {
   top: 100%;
   left: 0;
   display: none;
-  background-color: #dbdbdb; /* Set your dropdown background color */
+  background-color: #8b8b8b; /* Set your dropdown background color */
   box-shadow: 0 2px 4px rgba(235, 231, 231, 0.1); /* Optional: Add a box shadow for a subtle effect */
   z-index: 1;
   padding: 10px;
@@ -167,6 +203,7 @@ li:hover {
   margin-left: -5vw;
   margin-top: -1vh;
   border-radius: 10px;
+  color:#000000;
 }
 .dropdown-content div{
   margin-top: 5px;
@@ -256,3 +293,41 @@ li:hover {
   transform: scale(1.2);
   border: none;
 }
+/* Add this CSS for the toggle slider */
+.theme-toggle {
+  display: none;
+}
+
+.slider {
+  position: relative;
+  display: inline-block;
+  width: 2.5vw;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 15px;
+  margin-right: 5vw;
+  cursor: pointer;
+}
+
+.slider:before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: white;
+  top: 1px;
+  left: 1px;
+  transition: 0.3s;
+}
+
+.theme-toggle:checked + .slider:before {
+  transform: translateX(100%);
+}
+
+/* Add styles for light mode and dark mode */
+.theme-toggle:checked + .slider {
+  background-color: #5a5c5e; /* Color when toggled to dark mode */
+}
+
+/* Add other styles as needed */

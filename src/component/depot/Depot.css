@@ -86,3 +86,31 @@
     transform: scale(0.9);
     background-color: #8a8989;
   }
+
+  .success-popup, .error-popup {
+    background: rgb(68, 88, 68);
+    color: white;  /* Set text color */
+    height: 5vh;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -60vh;
+    width: 40vw;
+    border:none;  /* Add border */
+    border-radius: 0px;  /* Add border-radius for rounded corners */
+    padding: 10px;  /* Add padding for content */
+    font-size: 16px;  /* Set font size */
+  }
+  .success-popup::before,
+.error-popup::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;  /* Position at the top */
+  left: 2.9%;
+  border: solid transparent;
+  border-width: 15px;  /* Adjust the size of the triangle */
+  border-bottom-color: rgb(68, 88, 68);  /* Adjust the color to match the popup */
+  transform: translateX(-50%);
+}
+

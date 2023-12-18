@@ -1,10 +1,14 @@
 .historique-item{
-    background-color: rgb(167, 167, 167);
-    border : 1px solid white;
+    background-color: transparent;
+    border : 1px solid rgb(0, 0, 0);
+    border-left: none;
+    border-top: none;
+    border-right: none;
     display: flex;
     flex-direction: row;
     padding: 5px;
     margin: 10px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .historique-container{

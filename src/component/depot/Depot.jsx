@@ -10,21 +10,11 @@ const Depot = ({ onHistoryClick }) => {
   const [numero, setNumero] = useState('');
   const [montant, setMontant] = useState('');
   const [poids, setPoids] = useState('');
+  const[taxes, setTaxes] = useState('')
   const [grpCode, setGrpCode] = useState('');
+  const [successPopup, setSuccessPopup] = useState(false);
+  const [errorPopup, setErrorPopup] = useState(false);
 
-  const fetchBeneficiaireData = async (name) => {
-    try {
-      const response = await fetch(`http://localhost:8081/benefs?Ben_Nom=${name}`);
-      const beneficiaireData = await response.json();
-
-      console.log(`Beneficiaire data for ${name}:`, beneficiaireData);
-
-      return beneficiaireData;
-    } catch (error) {
-      console.error('Error fetching beneficiaire data:', error);
-      return [];
-    }
-  };
 
   const handleEnvoiClick = async () => {
     console.log('Handling Envoi Click');
@@ -83,15 +73,26 @@ const Depot = ({ onHistoryClick }) => {
         Env_poids: poids,
         Env_exp: expediteurName,
         Env_dest: destinataireName,
+        Env_taxe: taxes,
         Env_date_depot: formattedDate.slice(0, 10),
         Env_agence_depot: Env_agence_depot,
       };
   
-      await sendEnvoiData(envoiData);
+      // Call a function to send the envoi data to the server or handle it accordingly
+      const response = await sendEnvoiData(envoiData);
+  
+      // Check if the response has an error property
+      if (response && response.error) {
+        throw new Error(`Failed to send envoi data: ${response.error}`);
+      }
+  
+      // If the envoi is successfully added, you can handle it here
+      console.log('Envoi added successfully!');
+      setSuccessPopup(true);
   
       // Reset state
-      setExpediteurName('Rajao');
-      setExpediteurAddress('Ivato');
+      setExpediteurName('Alex');
+      setExpediteurAddress('Paris');
       setDestinataireName('Rajao');
       setDestinataireAddress('Ivato');
       setDestinataireTel('');
@@ -99,11 +100,24 @@ const Depot = ({ onHistoryClick }) => {
       setMontant('');
       setPoids('');
       setGrpCode(''); // Reset grpCode
+  
+      // Hide success popup after a delay (3000 milliseconds)
+      setTimeout(() => {
+        setSuccessPopup(false);
+      }, 3000);
     } catch (error) {
       console.error('Error handling envoi:', error);
+  
+      // If there's an error, set error popup to true
+      setErrorPopup(true);
+  
+      // Hide error popup after a delay (3000 milliseconds)
+      setTimeout(() => {
+        setErrorPopup(false);
+      }, 3000);
     }
   };
-  
+      
   // Add a new function to fetch beneficiaire group code
   const fetchBeneficiaireGroupCode = async (name) => {
     try {
@@ -167,15 +181,18 @@ const Depot = ({ onHistoryClick }) => {
         },
         body: JSON.stringify(envoiData),
       });
-
-      if (!response.ok) {
-        throw new Error('Failed to send envoi data');
-      }
-
+  
       const responseData = await response.json();
+  
+      if (!response.ok) {
+        throw new Error(`Failed to send envoi data: ${responseData.message}`);
+      }
+  
       console.log('Envoi data sent successfully', responseData);
+      return responseData; // Return the response data for further handling if needed
     } catch (error) {
       console.error('Error sending envoi data', error);
+      throw error; // Rethrow the error for proper handling in the calling function
     }
   };
 
@@ -246,8 +263,8 @@ const Depot = ({ onHistoryClick }) => {
           <input
             type='text'
             placeholder='Montant'
-            value={montant}
-            onChange={(e) => setMontant(e.target.value)}
+            value={taxes}
+            onChange={(e) => setTaxes(e.target.value)}
           />
           <input
             className='bottom-input'
@@ -257,7 +274,16 @@ const Depot = ({ onHistoryClick }) => {
             onChange={(e) => setPoids(e.target.value)}
           />
         </div>
-  
+        {successPopup && (
+          <div className='success-popup'>send successfully!</div>
+        )}
+
+        {/* Error Popup */}
+        {errorPopup && (
+          <div className='error-popup'>
+           Error when sending 
+          </div>
+        )}
         </div>
       </div>
   );

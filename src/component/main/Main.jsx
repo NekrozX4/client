@@ -9,6 +9,7 @@ import Configuration from '../configuration/Configuration';
 import Welcome from '../welcome/Welcome';
 import Historique from '../historique/Historique';
 import GroupDetail from '../group_detail/GroupDetail';
+import '../../App.css'
 
 const Main = () => {
   const navigate = useNavigate();
@@ -19,6 +20,8 @@ const Main = () => {
   const [showHistorique, setShowHistorique] = useState(false);
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [showDetail, setShowDetail] = useState(false);
+  const [lightMode, setLightMode] = useState(false); 
+
   const logout = () => {
     navigate('/');
   };
@@ -67,6 +70,16 @@ const Main = () => {
     setSelectedGroup(group);
     setShowDetail(true);
   };
+  
+  const toggleTheme = () => {
+    setLightMode((prevMode) => !prevMode);
+  };
+
+  // Add a class to the container based on the lightMode state
+  const containerClass = lightMode ? 'container light-mode' : 'container';
+  const sidebarClass = lightMode ? 'sidebar light-mode' : 'sidebar';
+  const contentClass = lightMode ? 'content light-mode' : 'content';
+  const headerClass = lightMode ? 'header light-mode': 'header';
 
   const renderContent = () => {
     if (showHistorique) {
@@ -76,25 +89,25 @@ const Main = () => {
     }
     switch (clickedP) {
       case 'Particulier':
-        return <Depot onHistoryClick={handleHistoryClick} />;
+        return <Depot onHistoryClick={handleHistoryClick} lightMode={lightMode}/>;
       case 'nombre':
-        return <Nombre />;
+        return <Nombre lightMode={lightMode}/>;
       case 'groupement':
-        return <Configuration onDetailClick={handleShowDetail} />;
+        return <Configuration onDetailClick={handleShowDetail} lightMode={lightMode}/>;
       case 'user':
-        return <User />;
+        return <User lightMode={lightMode}/>;
       case 'destinataire':
-        return <Destinataire />;
+        return <Destinataire lightMode={lightMode}/>;
       case 'home':
-        return <Welcome onWelcomeClick={handleWelcomeClick} />;
+        return  <Welcome onWelcomeClick={handleWelcomeClick} lightMode={lightMode} />;
       default:
-        return <Welcome onWelcomeClick={handleWelcomeClick} />;
+        return  <Welcome onWelcomeClick={handleWelcomeClick} lightMode={lightMode} />;
     }
   };
 
   return (
-    <div className="container">
-      <header>
+    <div className={containerClass}>
+      <header className={headerClass}>
         <div className='poste'></div>
         <div className='home' onClick={() => handleClickedP('home')}></div>
         <div className="search-bar">
@@ -122,13 +135,22 @@ const Main = () => {
               <div>Modification</div>
               <div>Pass</div>
               <div onClick={logout}>Se deconnecter</div>
+              <input
+                  type="checkbox"
+                  id="themeToggle"
+                  onChange={toggleTheme}
+                  checked={lightMode}
+                  className="theme-toggle"
+                />
+                <label htmlFor="themeToggle" className="slider"></label>
             </div>
           )}
         </div>
+     
       </header>
 
       <div className="content-container">
-        <aside className="sidebar">
+        <aside className={sidebarClass}>
         <div onClick={() => handleClickedP('home')} > home</div>
           <div onMouseEnter={() => handleMouseEnter('depot')} onMouseLeave={handleMouseLeave}>
             Depot
@@ -165,7 +187,7 @@ const Main = () => {
           <div className='sidebarshow'> ☰ </div>
         </aside>
 
-        <div className="content">{renderContent()}</div>
+        <div className={contentClass}>{renderContent()}</div>
       </div>
     </div>
   );

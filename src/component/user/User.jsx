@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './user.css'; // Import the CSS file
 
-function User() {
+function User({ lightMode })  {
   const [users, setUsers] = useState([]);
   const [formData, setFormData] = useState({
     Us_nom: "",
@@ -71,7 +71,7 @@ function User() {
   }, [users]);
 
   return (
-    <div className="custom-config-container">
+    <div className={`custom-config-container ${lightMode ? 'light-mode' : ''}`}>
       <div className="custom-form-container">
         <form>
           <div className="custom-form-element">

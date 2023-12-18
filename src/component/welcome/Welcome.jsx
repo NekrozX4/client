@@ -1,8 +1,7 @@
-// Welcome.jsx
 import React, { useState } from 'react';
 import './Welcome.css';
 
-const Welcome = ({ onWelcomeClick }) => {
+const Welcome = ({ onWelcomeClick, lightMode }) => {
   const [hoveredSection, setHoveredSection] = useState(null);
 
   const handleMouseEnter = (section) => {
@@ -18,7 +17,7 @@ const Welcome = ({ onWelcomeClick }) => {
   };
 
   return (
-    <div className='welcome'>
+    <div className={`welcome ${lightMode ? 'light-mode' : ''}`}>
       <div
         className='deposit'
         onMouseEnter={() => handleMouseEnter('depot')}

@@ -27,3 +27,19 @@
     justify-content: center;
 }
 
+.custom-input {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #504d4d;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    /* Add other styles as needed */
+  }
+  
+  /* Additional styles for the inputs in light mode */
+  .custom-config-container.light-mode .custom-input {
+    background-color: #f0f0f0; /* Example background color for light mode input */
+    color: #333333; /* Example text color for light mode input */
+    /* Add other light mode styles for input as needed */
+  }
