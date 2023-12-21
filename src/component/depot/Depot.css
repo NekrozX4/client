@@ -113,4 +113,24 @@
   border-bottom-color: rgb(68, 88, 68);  /* Adjust the color to match the popup */
   transform: translateX(-50%);
 }
+.send-cancel-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
 
+.send-cancel-button button{
+  width : 5vw;
+}
+
+.nbr-table td,th{
+  border: 1px solid white;
+  padding: 5px;
+  margin: 0;
+  text-align: center;
+}
+
+.agence{
+  width: 8vw;
+}

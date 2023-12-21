@@ -7,23 +7,22 @@
 
 /* Light Mode */
 .light-mode {
-  background-color: #ffffff;
   color: #333;
   /* Add other light mode styles */
 }
-  .header.light-mode{
-    background-color: #fff;
+  .sidebar.light-mode:hover{
+    background-color: #bbb3a9;
+    color: #000000;
   }
-  
   /* Additional styles for the sidebar in light mode */
   .sidebar.light-mode {
-    background-color: #b3b3b3; /* Example background color for light mode sidebar */
-    color: #333; /* Example text color for light mode sidebar */
+    background-color: #8b7e6e; /* Example background color for light mode sidebar */
+    color: #000000; /* Example text color for light mode sidebar */
   }
 
   /* Additional styles for the content in light mode */
   .content.light-mode {
-    background: #a1a1a1; /* Example background color for light mode content */
+    background: #cbc5bd; /* Example background color for light mode content */
     color: #000000; /* Example text color for light mode content */
   }
 
@@ -51,7 +50,7 @@
 
 /* Light Mode Header Style */
 .header.light-mode {
-  background:linear-gradient(to right, rgb(95, 95, 95), rgb(109, 100, 100));
+  background:linear-gradient(to right, #857f71,#615844,#665f50);
   color: #333;
 }
 
@@ -82,14 +81,10 @@
     background-color:  #575757;
     color: rgb(255, 255, 255);
   }
-  .sidebar.light-mode:hover{
-    background-color:#f1f1f1 ;
-    color: black;
-  }
   .content {
     flex: 1;
     padding: 10px;
-    background: linear-gradient(to right,rgb(54, 54, 54),rgb(37, 37, 37) 2%,rgb(24, 24, 24) 85%) ;
+    background: linear-gradient(to right,rgb(43, 43, 43),rgb(29, 29, 29) ,rgb(19, 19, 19)) ;
     color : rgb(255, 255, 255);
     width: 100vw;
     margin-right: -10px;

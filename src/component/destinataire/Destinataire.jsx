@@ -10,6 +10,7 @@ const Destinataire = () => {
     Ben_code: '',
     file: null,
   });
+  
   const [successPopup, setSuccessPopup] = useState(false);
   const [errorPopup, setErrorPopup] = useState(false);
   const [fileName, setFileName] = useState('');
@@ -129,12 +130,10 @@ const Destinataire = () => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       } else {
-        // If the beneficiary is successfully added, you can handle it here
         console.log('Beneficiary added successfully!');
         setSuccessPopup(true);
       }
 
-      // Clear form data
       setFormData({
         Grp_code: '',
         Ben_Nom: '',
@@ -142,20 +141,17 @@ const Destinataire = () => {
         Ben_code: '',
       });
 
-      // Hide success popup after a delay
       setTimeout(() => {
         setSuccessPopup(false);
-      }, 3000); // 3000 milliseconds (adjust as needed)
+      }, 3000); 
     } catch (error) {
       console.error('Error adding beneficiary:', error);
 
-      // Show error popup if there's an error
       setErrorPopup(true);
 
-      // Hide error popup after a delay
       setTimeout(() => {
         setErrorPopup(false);
-      }, 3000); // 3000 milliseconds (adjust as needed)
+      }, 3000);
     }
   };
 
@@ -216,7 +212,6 @@ const Destinataire = () => {
           <div className='popup-success-popup'>Beneficiary added successfully!</div>
         )}
 
-        {/* Error Popup */}
         {errorPopup && (
           <div className='popup-error-popup'>
             Error adding beneficiary. Please try again.

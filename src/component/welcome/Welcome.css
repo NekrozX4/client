@@ -16,10 +16,11 @@
  }
  
 .welcome.light-mode{
-   background-color: rgb(0, 0, 0,0.01);
+   background-color: transparent;
 }
 .welcome.light-mode div{
    box-shadow: none;
+   box-shadow: 0.14em 0.2em 7px rgb(95, 89, 63);
 }
 .welcome div {
    padding: 10px;
@@ -40,12 +41,15 @@
 }
 
 .welcome.light-mode div:hover{
-   background-color: rgb(192, 192, 192);
+   background-color: #736e62;
    color: black;
+
 }
 
 .welcome.light-mode div{
-   border: 1px solid black;
+   border: none;
+   background-color: NONE;
+   border: none;
 }
 .welcome div:hover{
     background-color: rgb(71, 71, 71);

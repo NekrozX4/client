@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import '../main/Main.css';
 import { useNavigate } from 'react-router-dom';
 import Depot from '../depot/Depot';
@@ -20,12 +20,16 @@ const Main = () => {
   const [showHistorique, setShowHistorique] = useState(false);
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [showDetail, setShowDetail] = useState(false);
-  const [lightMode, setLightMode] = useState(false); 
+  const [lightMode, setLightMode] = useState(() => {
+    // Load the theme from localStorage or default to false (dark mode)
+    const storedMode = localStorage.getItem('lightMode');
+    return storedMode === 'true';
+  });
 
   const logout = () => {
     navigate('/');
   };
-
+  
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -71,9 +75,23 @@ const Main = () => {
     setShowDetail(true);
   };
   
+  
   const toggleTheme = () => {
-    setLightMode((prevMode) => !prevMode);
+    setLightMode((prevMode) => {
+      // Toggle the theme and store the preference in localStorage
+      const newMode = !prevMode;
+      localStorage.setItem('lightMode', newMode.toString());
+      return newMode;
+    });
   };
+
+  useEffect(() => {
+    // Load the theme from localStorage when the component mounts
+    const storedMode = localStorage.getItem('lightMode');
+    if (storedMode) {
+      setLightMode(storedMode === 'true');
+    }
+  }, []);
 
   // Add a class to the container based on the lightMode state
   const containerClass = lightMode ? 'container light-mode' : 'container';
@@ -91,7 +109,7 @@ const Main = () => {
       case 'Particulier':
         return <Depot onHistoryClick={handleHistoryClick} lightMode={lightMode}/>;
       case 'nombre':
-        return <Nombre lightMode={lightMode}/>;
+        return <Nombre onHistoryClick={handleHistoryClick} lightMode={lightMode}/>;
       case 'groupement':
         return <Configuration onDetailClick={handleShowDetail} lightMode={lightMode}/>;
       case 'user':

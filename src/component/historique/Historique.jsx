@@ -21,7 +21,7 @@ const Historique = () => {
 
   return (
     <div className='historique-container'>
-      <h1>Historique</h1>
+      <h1>Envoi List</h1>
       <div className="historique-list">
         {historiqueData.map((envoi) => (
           <div key={envoi.Env_id} className="historique-item">
@@ -32,7 +32,7 @@ const Historique = () => {
             </p>
             <span>&nbsp;</span>
             <p>
-              <strong>Details:</strong> {`Num: ${envoi.Env_num}, Poids: ${envoi.Env_poids}, Taxe: ${envoi.Env_taxe}`}
+              <strong>Details:</strong> {`Num: ${envoi.Env_num}, Poids: ${envoi.Env_poids}g , Taxe: ${envoi.Env_taxe} Ar `}
             </p>
             <p>,</p>
             <span>&nbsp;</span>

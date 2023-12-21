@@ -228,7 +228,7 @@ function User({ lightMode })  {
                   >
                     Delete
                   </button>
-                </td>
+                </td> 
               </tr>
             ))}
           </tbody>

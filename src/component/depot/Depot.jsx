@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import './Depot.css';
 
 const Depot = ({ onHistoryClick }) => {
-  const [expediteurName, setExpediteurName] = useState('Alex');
-  const [expediteurAddress, setExpediteurAddress] = useState('Paris');
-  const [destinataireName, setDestinataireName] = useState('Alex');
-  const [destinataireAddress, setDestinataireAddress] = useState('Paris');
+  const [expediteurName, setExpediteurName] = useState('');
+  const [expediteurAddress, setExpediteurAddress] = useState('');
+  const [destinataireName, setDestinataireName] = useState('');
+  const [destinataireAddress, setDestinataireAddress] = useState('');
   const [destinataireTel, setDestinataireTel] = useState('');
   const [numero, setNumero] = useState('');
   const [montant, setMontant] = useState('');
@@ -91,10 +91,10 @@ const Depot = ({ onHistoryClick }) => {
       setSuccessPopup(true);
   
       // Reset state
-      setExpediteurName('Alex');
-      setExpediteurAddress('Paris');
-      setDestinataireName('Rajao');
-      setDestinataireAddress('Ivato');
+      setExpediteurName('');
+      setExpediteurAddress('');
+      setDestinataireName('');
+      setDestinataireAddress('');
       setDestinataireTel('');
       setNumero('');
       setMontant('');
@@ -204,7 +204,7 @@ const Depot = ({ onHistoryClick }) => {
     <div>
       <h1>Particulier</h1>
       <h2 className='history' onClick={handleHistoriqueClick}>
-        Historiques
+        Envoi List
       </h2>
       <button onClick={handleEnvoiClick}>submit</button>
 
