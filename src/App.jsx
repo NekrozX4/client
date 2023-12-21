@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path='/' element = {<Login />} />
         <Route path='/saisie' element = { <Saisie />} />
-        <Route path = '/main' element = {<Main />} />
+        <Route path='/main/:userLogin' element={<Main />} />
         <Route path='/remove' element = {<RemoveUser />} />
       </Routes>
     </Router>

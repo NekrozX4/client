@@ -20,6 +20,7 @@ const Main = () => {
   const [showHistorique, setShowHistorique] = useState(false);
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [showDetail, setShowDetail] = useState(false);
+  const [loggedInUser, setLoggedInUser] = useState(true);
   const [lightMode, setLightMode] = useState(() => {
     // Load the theme from localStorage or default to false (dark mode)
     const storedMode = localStorage.getItem('lightMode');
@@ -29,6 +30,7 @@ const Main = () => {
   const logout = () => {
     navigate('/');
   };
+  
   
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -91,6 +93,12 @@ const Main = () => {
     if (storedMode) {
       setLightMode(storedMode === 'true');
     }
+
+    const storedUser = localStorage.getItem('loggedInUser');
+    if (storedUser) {
+      setLoggedInUser(JSON.parse(storedUser));
+    }
+
   }, []);
 
   // Add a class to the container based on the lightMode state
@@ -143,6 +151,8 @@ const Main = () => {
             </button>
           </form>
         </div>
+        <div className='user-class'>
+        <div className='user-name'>{loggedInUser?.Us_nom}</div>
         <div
           onMouseEnter={toggleDropdown}
           onMouseLeave={toogleLeave}
@@ -163,6 +173,7 @@ const Main = () => {
                 <label htmlFor="themeToggle" className="slider"></label>
             </div>
           )}
+        </div>
         </div>
      
       </header>

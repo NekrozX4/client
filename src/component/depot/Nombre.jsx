@@ -53,12 +53,12 @@ const Nombre = ({ onHistoryClick }) => {
     }
   };
 
-  const fetchGroupementData = async (grpCode) => {
+  const fetchGroupementData = async (Grp_code) => {
     try {
-      const response = await fetch(`http://localhost:8081/groupement/${grpCode}`);
+      const response = await fetch(`http://localhost:8081/groupement/${Grp_code}`);
       const groupementData = await response.json();
 
-      console.log(`Groupement data for ${grpCode}:`, groupementData);
+      console.log(`Groupement data for ${Grp_code}:`, groupementData);
 
       return groupementData;
     } catch (error) {
@@ -68,30 +68,42 @@ const Nombre = ({ onHistoryClick }) => {
   };
 
   const updateEnvAgenceDepotData = async () => {
-    const newEnvAgenceDepotData = await Promise.all(
-      csvData.map(async (row) => {
-        const expediteurName = (row.Env_exp || '').trim();
-        const beneficiaireResponse = await fetch(`http://localhost:8081/benefs?Ben_Nom=${expediteurName}`);
-        const beneficiaireData = await beneficiaireResponse.json();
-
-        if (beneficiaireData.length > 0) {
-          const expediteurData = beneficiaireData.find((beneficiaire) => beneficiaire.Ben_Nom === expediteurName);
-          const grpCode = expediteurData.Grp_code;
-
-          const groupementData = await fetchGroupementData(grpCode);
-          const matchingGroupement = groupementData.find((groupement) => groupement.Grp_code === grpCode);
-
-          if (matchingGroupement) {
-            return matchingGroupement.Grp_nom; 
+    try {
+      const newEnvAgenceDepotData = await Promise.all(
+        csvData.map(async (row) => {
+          const expediteurName = (row.Env_exp || '').trim();
+          const beneficiaireResponse = await fetch(`http://localhost:8081/benefs?Ben_Nom=${expediteurName}`);
+          const beneficiaireData = await beneficiaireResponse.json();
+  
+          if (beneficiaireData.length > 0) {
+            const expediteurData = beneficiaireData.find((beneficiaire) => beneficiaire.Ben_Nom === expediteurName);
+            const Grp_code = expediteurData.Grp_code;
+  
+            console.log(`Beneficiaire grp_code for ${expediteurName}:`, Grp_code);
+  
+            const groupementData = await fetchGroupementData(Grp_code);
+            console.log(`Groupement data for ${Grp_code}:`, groupementData);
+  
+            const matchingGroupement = groupementData.find((groupement) => groupement.Grp_code === Grp_code);
+  
+            if (matchingGroupement) {
+              console.log(`Matching groupement for ${Grp_code}:`, matchingGroupement);
+              return matchingGroupement.Grp_nom; 
+            }
           }
-        }
-
-        return null;
-      })
-    );
-
-    setEnvAgenceDepotData(newEnvAgenceDepotData);
+  
+          return null;
+        })
+      );
+  
+      console.log('New EnvAgenceDepotData:', newEnvAgenceDepotData);
+      setEnvAgenceDepotData(newEnvAgenceDepotData);
+    } catch (error) {
+      console.error('Error updating envAgenceDepotData:', error);
+      // Handle error as needed
+    }
   };
+  
   const sendEnvoiData = async (envoiData) => {
     try {
       const response = await fetch('http://localhost:8081/envoi', {

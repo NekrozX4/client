@@ -5,32 +5,32 @@
 }
 
 
-/* Light Mode */
+
 .light-mode {
   color: #333;
-  /* Add other light mode styles */
+
 }
   .sidebar.light-mode:hover{
     background-color: #bbb3a9;
     color: #000000;
   }
-  /* Additional styles for the sidebar in light mode */
+
   .sidebar.light-mode {
-    background-color: #8b7e6e; /* Example background color for light mode sidebar */
-    color: #000000; /* Example text color for light mode sidebar */
+    background-color: #8b7e6e; 
+    color: #000000; 
   }
 
-  /* Additional styles for the content in light mode */
+
   .content.light-mode {
-    background: #cbc5bd; /* Example background color for light mode content */
-    color: #000000; /* Example text color for light mode content */
+    background: #cbc5bd; 
+    color: #000000; 
   }
 
-  /* Additional styles for other elements in light mode as needed */
+ 
 
 
 
- /* General Header Style */
+
 .header {
   position: fixed;
   top: 0;
@@ -138,7 +138,7 @@ li:hover {
 }
 
 .sidebar-hidden {
-  margin-left: -200px; /* Adjust the width of your sidebar */
+  margin-left: -200px; 
 }
 
 .poste{
@@ -180,6 +180,7 @@ li:hover {
   background-position: 50% 0;
   background-color: beige;
   transition: 0.3s ease-in-out;
+  margin-left: 10vw;
 }
 .user-dropdown:hover{
   transform: scale(1.1);
@@ -189,8 +190,8 @@ li:hover {
   top: 100%;
   left: 0;
   display: none;
-  background-color: #8b8b8b; /* Set your dropdown background color */
-  box-shadow: 0 2px 4px rgba(235, 231, 231, 0.1); /* Optional: Add a box shadow for a subtle effect */
+  background-color: #8b8b8b; 
+  box-shadow: 0 2px 4px rgba(235, 231, 231, 0.1);
   z-index: 1;
   padding: 10px;
   height: max-content;
@@ -221,7 +222,7 @@ li:hover {
   text-align: left;
   border: none;
   background: none;
-  color: #333; /* Set your text color */
+  color: #333;
   cursor: pointer;
 }
 
@@ -232,23 +233,22 @@ li:hover {
 }
 
 .sidebar {
-  /* ... existing styles ... */
+
   position: relative;
 }
 
 .sidebarshow {
-  /* Additional styles for the sidebarshow */
   position: absolute;
   top: 45%;
   color: rgb(0, 0, 0);
   font-weight: bolder;
-  right: -17px; /* Adjust the value to control how much it extends */
-  background-color: transparent; /* Set a background color */
-  padding: 5px; /* Add padding for better appearance */
-  cursor: pointer; /* Add cursor style to indicate it's clickable */
-  transform: translateY(-50%); /* Center vertically */
-  display: block; /* Make it visible by default */
-  z-index: 1; /* Ensure it stays above other elements */
+  right: -17px;
+  background-color: transparent; 
+  padding: 5px; 
+  cursor: pointer; 
+  transform: translateY(-50%); 
+  display: block; 
+  z-index: 1; 
 }
 
 .sidebar:hover .sidebarshow {
@@ -288,7 +288,7 @@ li:hover {
   transform: scale(1.2);
   border: none;
 }
-/* Add this CSS for the toggle slider */
+
 .theme-toggle {
   display: none;
 }
@@ -320,9 +320,22 @@ li:hover {
   transform: translateX(100%);
 }
 
-/* Add styles for light mode and dark mode */
+
 .theme-toggle:checked + .slider {
-  background-color: #5a5c5e; /* Color when toggled to dark mode */
+  background-color: #5a5c5e; 
 }
 
-/* Add other styles as needed */
+.user-class {
+  display: flex;
+  align-items: center;
+}
+
+.user-name {
+  margin-right: 5px; 
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.user-dropdown {
+  margin-left: 5px; 
+}

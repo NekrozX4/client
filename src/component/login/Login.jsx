@@ -7,7 +7,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
-  const [showInputError, setShowInputError] = useState(false); // State for input error
+  const [showInputError, setShowInputError] = useState(false); 
   const navigate = useNavigate('');
 
   const handleLogin = async () => {
@@ -31,8 +31,8 @@ const Login = () => {
         if (user.Fo_id === 1) {
           localStorage.setItem('loggedInUser', JSON.stringify(user));
           console.log('Logged-in user data:', user);
-          console.log('Login successful! Redirecting to /main');
-          navigate('/main', { state: { loggedInUser: user } });
+          console.log('Login successful! Redirecting to user profile');
+          navigate(`/main/${user.Us_matricule}`, { state: { loggedInUser: user } });
         } else if (user.Fo_id === 2) {
           console.log('User does not have admin privileges.');
           navigate('/saisie');
