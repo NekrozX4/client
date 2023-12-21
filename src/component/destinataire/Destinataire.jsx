@@ -162,20 +162,17 @@ const Destinataire = () => {
       <div className='input-container'>
         <div className='input-first'>
           <label htmlFor='fileInput' className='label-file'>
-            Import file
+            Importer un fichier exel
           </label>
           <input type='file' id='fileInput' accept='.csv' onChange={handleFileChange} />
-          <button className='button-select' onClick={handleFileSelection}>
-            Select One
-          </button>
-          <div>{fileName && `File selected: ${fileName}`}</div>
+          <div>{fileName && `Fichier selectioné: ${fileName}`}</div>
           <button type='button' onClick={handleSendDataButtonClick}>
-            Send Data
+            Ajouter
           </button>
         </div>
 
         <div className='input-group'>
-          <h2>Details</h2>
+          <h2>Destinataire unique</h2>
           <form onSubmit={handleSubmit}>
             <input
               type='text'
@@ -205,7 +202,7 @@ const Destinataire = () => {
               value={formData.Ben_code}
               onChange={handleChange}
             />
-            <button type='submit'>Envoi</button>
+            <button type='submit'>Ajouter</button>
           </form>
         </div>
         {successPopup && (
