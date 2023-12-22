@@ -61,14 +61,13 @@
     transition: 0.2s ease-in-out;
   }
   .sidebar {
-    margin-top: 0vh;
     background-color: #474747 ;
     padding: 20px;
-    min-width: 10vw; 
+    min-width: 10vw;
+    margin-top: 1vh; 
     color : rgb(114, 114, 114);
     margin-left: -10vw;
     transition: 0.3s  ease-in-out;
-    margin-top: 1.1vh;
     position: fixed;
     z-index: 999;
     font-family:Arial, Helvetica, sans-serif;
@@ -80,6 +79,7 @@
     cursor: pointer;
     background-color:  #575757;
     color: rgb(255, 255, 255);
+    z-index: 9999999;
   }
   .content {
     flex: 1;
@@ -91,8 +91,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow-y: hidden;
-
   }
   .content.sidebar{
     position: fixed;
@@ -344,3 +342,4 @@ li:hover {
 .user-dropdown {
   margin-left: 5px; 
 }
+

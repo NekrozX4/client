@@ -42,3 +42,8 @@
     width: 50vw;
     border-radius: 20px;
 }
+
+.main-history-container{
+    max-height: 70vh;
+    overflow-y: auto;
+}

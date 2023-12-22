@@ -202,6 +202,7 @@ const Depot = ({ onHistoryClick }) => {
 
   return (
     <div>
+      <div className='particulier-container'>
       <h1>Particulier</h1>
       <h2 className='history' onClick={handleHistoriqueClick}>
         Deposit list
@@ -285,6 +286,7 @@ const Depot = ({ onHistoryClick }) => {
           </div>
         )}
         </div>
+      </div>
       </div>
   );
 };

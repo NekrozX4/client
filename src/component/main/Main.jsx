@@ -215,8 +215,8 @@ const Main = () => {
           </div>
           <div className='sidebarshow'> ☰ </div>
         </aside>
-
         <div className={contentClass}>{renderContent()}</div>
+       
       </div>
     </div>
   );

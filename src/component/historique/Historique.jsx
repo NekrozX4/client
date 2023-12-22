@@ -94,7 +94,7 @@ const Historique = () => {
   return (
     <div className='historique-container'>
       <h1>Deposit list</h1>
-
+    <div className='main-history-container'>
       {/* Search Bar */}
       <div className='search-bar-history'>
         <input
@@ -173,6 +173,7 @@ const Historique = () => {
           ))}
         </div>
       )}
+    </div>
     </div>
   );
 };

@@ -134,3 +134,13 @@
 .agence{
   width: 8vw;
 }
+
+.particulier-container {
+  margin-top: 2vh;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.particulier-container::-webkit-scrollbar {
+  width: 0; /* Set the width to 0 to hide the scrollbar */
+}
