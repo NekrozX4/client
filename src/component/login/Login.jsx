@@ -12,19 +12,16 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      // Validate inputs
       if (!email || !password) {
         setShowInputError(true);
         return;
       }
   
       setShowInputError(false);
-  
-      // Fetch users
+
       const usersResponse = await fetch('http://localhost:8081/utilisateur');
       const usersData = await usersResponse.json();
   
-      // Find a user with matching email and password
       const user = usersData.find((user) => user.Us_login === email && user.Us_pwd === password);
   
       if (user) {
@@ -68,7 +65,7 @@ const Login = () => {
             type='text'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className={showInputError ? 'input-error' : ''} // Apply the input error class conditionally
+            className={showInputError ? 'input-error' : ''}
           />
           <br /> 
           <input
@@ -76,7 +73,7 @@ const Login = () => {
             type={showPassword ? 'text' : 'password'}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className={showInputError ? 'input-error' : ''} // Apply the input error class conditionally
+            className={showInputError ? 'input-error' : ''} 
           />
           <br />
           <p className='hide-show' type='button' onClick={togglePasswordVisibility}>

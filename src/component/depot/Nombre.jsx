@@ -180,7 +180,7 @@ const Nombre = ({ onHistoryClick }) => {
   return (
     <div>
       <h2 className='history' onClick={handleHistoriqueClick}>
-        Envoi List
+        Deposit list
       </h2>
       <input type="file" accept=".csv" onChange={handleFileUpload} />
       <table className='nbr-table'>

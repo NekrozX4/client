@@ -1,6 +1,16 @@
-.historique-item{
+.historique-container {
+    overflow-y: hidden;
+}
+
+.historique-list {
+    overflow-y: auto; /* Allow the content to scroll */
+    height: 100%; /* Occupy the full height of the container */
+    overflow-y: hidden ;
+}
+
+.historique-item {
     background-color: transparent;
-    border : 1px solid rgb(0, 0, 0);
+    border: 1px solid rgb(0, 0, 0);
     border-left: none;
     border-top: none;
     border-right: none;
@@ -8,9 +18,27 @@
     flex-direction: row;
     padding: 5px;
     margin: 10px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.historique-container{
-    
+.search-bar-history button {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 40px;
+}
+
+.search-bar-history {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+}
+
+.search-bar-history input{
+    width: 50vw;
+    border-radius: 20px;
 }

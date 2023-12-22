@@ -204,7 +204,7 @@ const Depot = ({ onHistoryClick }) => {
     <div>
       <h1>Particulier</h1>
       <h2 className='history' onClick={handleHistoriqueClick}>
-        Envoi List
+        Deposit list
       </h2>
       <button onClick={handleEnvoiClick}>submit</button>
 

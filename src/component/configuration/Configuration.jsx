@@ -5,6 +5,7 @@ import './Config.css'; // Import the CSS file
 function Configuration({onDetailClick}) {
   const [groups, setGroups] = useState([]);
   const [selectedGroupId, setSelectedGroupId] = useState(null);
+  
 
 
   const [formData, setFormData] = useState({
@@ -14,7 +15,7 @@ function Configuration({onDetailClick}) {
     Grp_responsable: "",
     Grp_contact: "",
     Grp_type: "",
-  });
+  }); 
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
