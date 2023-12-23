@@ -129,27 +129,26 @@ const Main = () => {
       return <Historique />;
     } else if (showDetail) {
       return <GroupDetail selectedGroup={selectedGroup} onClose={() => setShowDetail(false)} />;
-    }
-  
-    switch (clickedP) {
-      case 'Particulier':
-        return <Depot onHistoryClick={handleHistoryClick} lightMode={lightMode} />;
-      case 'nombre':
-        return <Nombre onHistoryClick={handleHistoryClick} lightMode={lightMode} />;
-      case 'groupement':
-        return <Configuration onDetailClick={handleShowDetail} lightMode={lightMode} />;
-      case 'user':
-        return <User lightMode={lightMode} />;
-      case 'destinataire':
-        return <Destinataire lightMode={lightMode} />;
+    } else {
+      switch (clickedP) {
+        case 'Particulier':
+          return <Depot onHistoryClick={handleHistoryClick} lightMode={lightMode} />;
+        case 'En Nombre':
+          return <Nombre onHistoryClick={handleHistoryClick} lightMode={lightMode} />;
+        case 'Groupement':
+          return <Configuration onDetailClick={handleShowDetail} lightMode={lightMode} />;
+        case 'Utilisateur':
+          return <User lightMode={lightMode} />;
+        case 'Destinataire':
+          return <Destinataire lightMode={lightMode} />;
         case 'home':
           return <Welcome onWelcomeClick={handleWelcomeClick} lightMode={lightMode} setLastClickedComponent={setClickedP} />;
         default:
-          return <Welcome onWelcomeClick={handleWelcomeClick} lightMode={lightMode} setLastClickedComponent={setClickedP} />;        
+          return <Welcome onWelcomeClick={handleWelcomeClick} lightMode={lightMode} setLastClickedComponent={setClickedP} />;
+      }
     }
   };
   
-
   return (
     <div className={containerClass}>
       <header className={headerClass}>
