@@ -44,6 +44,61 @@
 }
 
 .main-history-container{
-    max-height: 70vh;
+    max-height: 65vh;
     overflow-y: auto;
 }
+
+.main-history-container::-webkit-scrollbar {
+    width: 12px; /* Set the width of the scrollbar */
+    cursor: pointer;
+  }
+  
+  .main-history-container::-webkit-scrollbar-track {
+    background-color: rgb(0, 0, 0,0.1);
+    border-radius: 5px;
+    cursor: pointer;
+}
+  
+  .main-history-container::-webkit-scrollbar-thumb {
+    background-color: #505050; /* Set the color of the scrollbar thumb */
+    border-radius: 6px; /* Set the border radius of the scrollbar thumb */
+    cursor: pointer;
+  }
+  
+  .main-history-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Set the color of the scrollbar thumb on hover */
+    cursor: pointer;
+  }
+  
+
+.history-header{
+    background-color: none;
+}
+
+.group-by-dropdown {
+    margin-right: 0; 
+    cursor: pointer;
+  }
+.group-by-dropdown select{
+    cursor: pointer;
+    background-color: #8a8a8a;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    margin-left: 5px;
+    color: rgb(49, 28, 1);
+    font-weight: bolder;
+}
+.group-by-dropdown option{
+    cursor: pointer;
+}
+
+  .sorting {
+    background-color:none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Align items at the start and end */
+    padding-right: 20px; /* Add some padding to the right for spacing */
+    margin-bottom: -5vh;
+  }
+  

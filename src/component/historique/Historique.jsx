@@ -7,10 +7,10 @@ const Historique = () => {
   const [beneficiaryData, setBeneficiaryData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const [showSearchResults, setShowSearchResults] = useState(false); // Added state
+  const [groupBy, setGroupBy] = useState('address'); // Default grouping by address
+  const [showSearchResults, setShowSearchResults] = useState(false);
 
   useEffect(() => {
-    // Fetch historique and beneficiary data when the component mounts
     fetchHistoriqueData();
     fetchBeneficiaryData();
   }, []);
@@ -52,17 +52,34 @@ const Historique = () => {
     return organizedData;
   };
 
+  const organizeHistoriqueDataByAgence = () => {
+    const organizedData = {};
+
+    historiqueData.forEach((envoi) => {
+      const agence = envoi.Env_agence_depot;
+
+      if (!organizedData[agence]) {
+        organizedData[agence] = [];
+      }
+
+      organizedData[agence].push(envoi);
+    });
+
+    return organizedData;
+  };
+
   const getBeneficiaryAddress = (beneficiaryName) => {
     const beneficiary = beneficiaryData.find((b) => b.Ben_Nom === beneficiaryName);
     return beneficiary ? beneficiary.Ben_Addresse : '';
   };
 
-  const organizedData = organizeHistoriqueDataByBeneficiaryAddress();
- 
+  const organizedData = groupBy === 'address'
+    ? organizeHistoriqueDataByBeneficiaryAddress()
+    : organizeHistoriqueDataByAgence();
+
   const handleSearch = (searchTerm) => {
     setSearchTerm(searchTerm);
 
-    // Use the searchTerm to filter envoi data based on your criteria
     const filteredResults = historiqueData.filter((envoi) => {
       const formattedDate = envoi.Env_date_depot
         ? format(new Date(envoi.Env_date_depot), 'MM/dd/yyyy', { timeZone: 'Africa/Nairobi' })
@@ -80,100 +97,106 @@ const Historique = () => {
     });
 
     setSearchResults(filteredResults);
-    setShowSearchResults(true); // Show search results
+    setShowSearchResults(true);
   };
-
-
 
   const handleClearSearch = () => {
     setSearchTerm('');
     setSearchResults([]);
-    setShowSearchResults(false); // Show regular data
+    setShowSearchResults(false);
   };
 
   return (
     <div className='historique-container'>
+      <div className='history-header'>
+        <div className='sorting metho'>
       <h1>Deposit list</h1>
-    <div className='main-history-container'>
-      {/* Search Bar */}
-      <div className='search-bar-history'>
-        <input
-          type='text'
-          placeholder='Search...'
-          value={searchTerm}
-          onChange={(e) => handleSearch(e.target.value)}
-        />
-        <button onClick={() => setShowSearchResults(false)}>Clear</button>
+             {/* Group By Dropdown */}
+            <div className='group-by-dropdown'>
+          <label htmlFor='groupBy'>Group By:</label>
+          <select
+            id='groupBy'
+            value={groupBy}
+            onChange={(e) => setGroupBy(e.target.value)}
+          >
+            <option value='address'>Address</option>
+            <option value='agence'>Agence</option>
+          </select>
+        </div>
+        </div>
+        <div className='search-bar-history'>
+          <input
+            type='text'
+            placeholder='Search...'
+            value={searchTerm}
+            onChange={(e) => handleSearch(e.target.value)}
+          />
+          <button onClick={handleClearSearch}>Clear</button>
+        </div>
+        </div>
+
+      <div className='main-history-container'>
+        {showSearchResults ? (
+          <div className='search-results'>
+            <h2>Search Results</h2>
+            {searchResults.map((result) => (
+              <div key={result.Env_id} className='historique-item'>
+                <p>
+                  <strong>From:</strong> {result.Env_exp}
+                  <span className='separator'> | </span>
+                  <strong>To:</strong> {result.Env_dest}
+                </p>
+                <p>
+                  <strong>Details:</strong> {`Num: ${result.Env_num}, Poids: ${result.Env_poids}g , Taxe: ${result.Env_taxe} Ar `}
+                </p>
+                <p>
+                  <strong>Date:</strong>{' '}
+                  {result.Env_date_depot &&
+                    new Date(result.Env_date_depot).toLocaleDateString('en-US', {
+                      timeZone: 'Africa/Nairobi',
+                    })}
+                  <span className='separator'> | </span>
+                  <strong>Agence:</strong> {result.Env_agence_depot}
+                </p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className='historique-list'>
+            {Object.keys(organizedData).map((groupKey) => (
+              <div key={groupKey}>
+                <h2>{`${groupBy === 'address' ? 'Address' : 'Agence'}: ${groupKey} (${
+                  organizedData[groupKey].length !== 1
+                    ? `nombre de depots: ${organizedData[groupKey].length}`
+                    : 'nombre de depot: 1'
+                })`}</h2>
+
+                {organizedData[groupKey].map((envoi) => (
+                  <div key={envoi.Env_id} className='historique-item'>
+                    <p>
+                      <strong>From:</strong> {envoi.Env_exp}
+                      <span className='separator'> | </span>
+                      <strong>To:</strong> {envoi.Env_dest}
+                    </p>
+                    <p>
+                      <strong>Details:</strong> {`Num: ${envoi.Env_num}, Poids: ${envoi.Env_poids}g , Taxe: ${envoi.Env_taxe} Ar `}
+                    </p>
+                    <p>
+                      <strong>Date:</strong>{' '}
+                      {envoi.Env_date_depot &&
+                        new Date(envoi.Env_date_depot).toLocaleDateString('en-US', {
+                          timeZone: 'Africa/Nairobi',
+                        })}
+                      <span className='separator'> | </span>
+                      <strong>{groupBy === 'address' ? 'Agence' : 'Address'}:</strong> {groupBy === 'address' ? envoi.Env_agence_depot : getBeneficiaryAddress(envoi.Env_dest)}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
-
-      {/* Display data based on the state */}
-      {showSearchResults ? (
-        <div className='search-results'>
-          <h2>Search Results</h2>
-          {searchResults.map((result) => (
-            <div key={result.Env_id} className='historique-item'>
-              {/* Display search results */}
-              <p>
-                <strong>From:</strong> {result.Env_exp}
-                <span className='separator'> | </span>
-                <strong>To:</strong> {result.Env_dest}
-              </p>
-              <span>&nbsp;;</span>
-              <p>
-                <strong>Details:</strong> {`Num: ${result.Env_num}, Poids: ${result.Env_poids}g , Taxe: ${result.Env_taxe} Ar `}
-              </p>
-              <p>
-                <strong>Date:</strong>{' '}
-                {result.Env_date_depot &&
-                  new Date(result.Env_date_depot).toLocaleDateString('en-US', {
-                    timeZone: 'Africa/Nairobi',
-                  })}
-                <span className='separator'> | </span>
-                <strong>Agence:</strong> {result.Env_agence_depot}
-              </p>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className='historique-list'>
-          {Object.keys(organizedData).map((address) => (
-            <div key={address}>
-           <h2>{`Address: ${address} (${
-                organizedData[address].length !== 1
-                  ? `nombre de depots: ${organizedData[address].length}`
-                  : 'nombre de depot: 1'
-              })`}</h2>
-
-              {organizedData[address].map((envoi) => (
-                <div key={envoi.Env_id} className='historique-item'>
-                  {/* Display envoi data for the current address */}
-                  <p>
-                    <strong>From:</strong> {envoi.Env_exp}
-                    <span className='separator'> | </span>
-                    <strong>To:</strong> {envoi.Env_dest}
-                  </p>
-                  <span>&nbsp;</span>
-                  <span>&nbsp;</span>
-                  <p>
-                    <strong>Details:</strong> {`Num: ${envoi.Env_num}, Poids: ${envoi.Env_poids}g , Taxe: ${envoi.Env_taxe} Ar `}
-                  </p>
-                  <span>&nbsp;</span>
-                  <p>
-                    <strong>Date:</strong>{' '}
-                    {envoi.Env_date_depot &&
-                      new Date(envoi.Env_date_depot).toLocaleDateString('en-US', {
-                        timeZone: 'Africa/Nairobi',
-                      })}
-                    <span className='separator'> | </span>
-                    <strong>Agence:</strong> {envoi.Env_agence_depot}
-                  </p>
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
     </div>
   );
 };
