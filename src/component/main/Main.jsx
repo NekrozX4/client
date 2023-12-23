@@ -60,6 +60,7 @@ const Main = () => {
   
   
   
+  
   useEffect(() => {
     // Load the last clicked component from localStorage when the component mounts
     const storedClickedComponent = localStorage.getItem('lastClickedComponent');
@@ -133,9 +134,9 @@ const Main = () => {
       switch (clickedP) {
         case 'Particulier':
           return <Depot onHistoryClick={handleHistoryClick} lightMode={lightMode} />;
-        case 'En Nombre':
+        case 'En nombre':
           return <Nombre onHistoryClick={handleHistoryClick} lightMode={lightMode} />;
-        case 'Groupement':
+        case 'Groupement': 
           return <Configuration onDetailClick={handleShowDetail} lightMode={lightMode} />;
         case 'Utilisateur':
           return <User lightMode={lightMode} />;
@@ -148,6 +149,7 @@ const Main = () => {
       }
     }
   };
+  
   
   return (
     <div className={containerClass}>
@@ -204,7 +206,7 @@ const Main = () => {
             {clickedDiv === 'depot' && (
               <>
                 <p onClick={() => handleClickedP('Particulier')}>Particulier</p>
-                <p onClick={() => handleClickedP('nombre')}>En nombre</p>
+                <p onClick={() => handleClickedP('En nombre')}>En nombre</p>
               </>
             )}
           </div>
@@ -225,9 +227,9 @@ const Main = () => {
             Configuration
             {clickedDiv === 'configuration' && (
               <>
-                <p onClick={() => handleClickedP('groupement')}>Groupement</p>
-                <p onClick={() => handleClickedP('user')}>Utilisateurs</p>
-                <p onClick={() => handleClickedP('destinataire')}>Destinataires</p>
+                <p onClick={() => handleClickedP('Groupement')}>Groupement</p>
+                <p onClick={() => handleClickedP('Utilisateur')}>Utilisateurs</p>
+                <p onClick={() => handleClickedP('Destinataire')}>Destinataires</p>
               </>
             )}
           </div>

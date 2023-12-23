@@ -20,7 +20,7 @@
     padding: 5px;
     margin: 10px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    animation : identifier 0.5s ease-in
+    animation : identifier 1s ease-in;
 }
 
 .search-bar-history button {
@@ -122,11 +122,14 @@
   }
 
  @keyframes identifier {
-  from{
+  0%{
     transform: translateX(-150vh);
+    opacity: 0;
+    transition: 1s;
   }
-  to{
+  100%{
     transform: translateX(0);
+    opacity: 1;
   }
  }
 

@@ -13,7 +13,7 @@ const Welcome = ({ onWelcomeClick, lightMode, setLastClickedComponent }) => {
   };
 
   const handleH2Click = (section) => {
-    onWelcomeClick(section);  // Make sure onWelcomeClick is defined and correctly passed from Main
+    onWelcomeClick(section); 
     setLastClickedComponent(section);
     localStorage.setItem('lastClickedComponent', section);
   };
@@ -45,7 +45,7 @@ const Welcome = ({ onWelcomeClick, lightMode, setLastClickedComponent }) => {
       {isSectionActive('depot') ? (
         <>
           {renderH2('Particulier')}
-          {renderH2('En Nombre')}
+          {renderH2('En nombre')}
         </>
       ) : (
         <h1>DEPOT</h1>

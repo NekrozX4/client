@@ -119,9 +119,10 @@ function Configuration({onDetailClick}) {
     onDetailClick(group);
   };
   
+  
   return (
-    <div className="custom-config-container"> {/* Updated class name */}
-      <div className="custom-form-container"> {/* Updated class name */}
+    <div className="custom-config-container">
+      <div className="custom-form-container"> 
         <form>
           <h1>Nouveau groupe</h1>
           <div className="custom-form-element">
