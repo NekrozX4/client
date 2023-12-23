@@ -162,7 +162,7 @@ const Destinataire = () => {
       <div className='input-container'>
         <div className='input-first'>
           <label htmlFor='fileInput' className='label-file'>
-            Importer un fichier exel
+            Importer un fichier exel <p>example.csv(comma delimited)</p>
           </label>
           <input type='file' id='fileInput' accept='.csv' onChange={handleFileChange} />
           <div>{fileName && `Fichier selectioné: ${fileName}`}</div>

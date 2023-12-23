@@ -194,3 +194,25 @@
   border-width: 10px;
   margin-left: -10px;
 }
+
+.label-file {
+  position: relative;
+  cursor: pointer;
+}
+
+.label-file p {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 5px;
+  padding: 5px;
+  background-color: #636363;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.label-file:hover p {
+  display: block;
+}

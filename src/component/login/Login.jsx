@@ -54,11 +54,9 @@ const Login = () => {
 
   return (
     <div className='main-container'>
-      <div className='login-container'>
-        <div className='about-section'>
-          <div className='about-image'></div>
-        </div>
+      <div className='login-container'> 
         <div className='login-section'>
+        <div className='about-image'></div>
           <h2>LOGIN</h2>
           <input
             placeholder={`Login${showInputError ? ' - veuillez remplir ce champ' : ''}`}
