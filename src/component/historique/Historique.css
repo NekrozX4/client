@@ -6,11 +6,12 @@
     overflow-y: auto; /* Allow the content to scroll */
     height: 100%; /* Occupy the full height of the container */
     overflow-y: hidden ;
+    animation : fadeinleft 0.5s ease-in
 }
 
 .historique-item {
     background-color: transparent;
-    border: 1px solid rgb(0, 0, 0);
+    border: 1px solid rgb(255, 255, 255);
     border-left: none;
     border-top: none;
     border-right: none;
@@ -19,6 +20,7 @@
     padding: 5px;
     margin: 10px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    animation : identifier 0.5s ease-in
 }
 
 .search-bar-history button {
@@ -73,6 +75,7 @@
 
 .history-header{
     background-color: none;
+    animation : identifier 0.5s ease-in
 }
 
 .group-by-dropdown {
@@ -101,4 +104,30 @@
     padding-right: 20px; /* Add some padding to the right for spacing */
     margin-bottom: -5vh;
   }
+  
+  .grouping{
+    background-color: rgb(255,255,255,0.2);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+  }
+
+  @keyframes fadeinleft {
+    from{
+      transform: translateX(150vh);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+ @keyframes identifier {
+  from{
+    transform: translateX(-150vh);
+  }
+  to{
+    transform: translateX(0);
+  }
+ }
+
   

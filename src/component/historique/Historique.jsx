@@ -146,9 +146,11 @@ const Historique = () => {
                   <span className='separator'> | </span>
                   <strong>To:</strong> {result.Env_dest}
                 </p>
+                <span>&nbsp;</span>
                 <p>
                   <strong>Details:</strong> {`Num: ${result.Env_num}, Poids: ${result.Env_poids}g , Taxe: ${result.Env_taxe} Ar `}
                 </p>
+                <span>&nbsp;</span>
                 <p>
                   <strong>Date:</strong>{' '}
                   {result.Env_date_depot &&
@@ -157,6 +159,8 @@ const Historique = () => {
                     })}
                   <span className='separator'> | </span>
                   <strong>Agence:</strong> {result.Env_agence_depot}
+                  <span className='separator'> | </span>
+                  <strong>Address:</strong> {getBeneficiaryAddress(result.Env_dest)}
                 </p>
               </div>
             ))}
@@ -164,7 +168,7 @@ const Historique = () => {
         ) : (
           <div className='historique-list'>
             {Object.keys(organizedData).map((groupKey) => (
-              <div key={groupKey}>
+              <div className='grouping' key={groupKey}>
                 <h2>{`${groupBy === 'address' ? 'Address' : 'Agence'}: ${groupKey} (${
                   organizedData[groupKey].length !== 1
                     ? `nombre de depots: ${organizedData[groupKey].length}`
@@ -178,9 +182,11 @@ const Historique = () => {
                       <span className='separator'> | </span>
                       <strong>To:</strong> {envoi.Env_dest}
                     </p>
+                    <span>&nbsp;</span>
                     <p>
                       <strong>Details:</strong> {`Num: ${envoi.Env_num}, Poids: ${envoi.Env_poids}g , Taxe: ${envoi.Env_taxe} Ar `}
                     </p>
+                    <span>&nbsp;</span>
                     <p>
                       <strong>Date:</strong>{' '}
                       {envoi.Env_date_depot &&

@@ -3,6 +3,7 @@
     flex-direction: column;
     height: 100vh;
     overflow-y: auto;
+    color: rgb(153, 153, 153);
 }
 
 
@@ -33,8 +34,8 @@
   top: 0;
   left: 0;
   right: 0;
-  background : linear-gradient(to right, rgb(63, 62, 62), rgb(0, 0, 0), rgb(46, 46, 46));
-  color: rgb(255, 255, 255);
+  background : linear-gradient(to right, rgb(139, 65, 30), rgb(155, 80, 11), rgb(216, 73, 6));
+  color: rgb(173, 173, 173);
   padding: 10px;
   text-align: center;
   width: 100%;
@@ -61,11 +62,11 @@
     transition: 0.2s ease-in-out;
   }
   .sidebar {
-    background-color: #474747 ;
+    background-color: #313131 ;
     padding: 20px;
     min-width: 10vw;
     margin-top: 1vh; 
-    color : rgb(114, 114, 114);
+    color : rgb(255, 255, 255);
     margin-left: -10vw;
     transition: 0.3s  ease-in-out;
     position: fixed;
@@ -77,15 +78,15 @@
   .sidebar:hover {
     transform: translateX(10vw);
     cursor: pointer;
-    background-color:  #575757;
-    color: rgb(255, 255, 255);
+    background-color:  #292929;
+    color: rgb(180, 180, 180);
     z-index: 9999999;
   }
   .content {
     flex: 1;
     padding: 10px;
-    background: linear-gradient(to right,rgb(43, 43, 43),rgb(29, 29, 29) ,rgb(19, 19, 19)) ;
-    color : rgb(255, 255, 255);
+    background: linear-gradient(to top,rgb(15, 15, 15),rgb(15, 15, 15) ,rgb(12, 11, 11)) ;
+    color : rgb(243, 238, 238);
     width: 100vw;
     margin-right: -10px;
     display: flex;
@@ -239,10 +240,14 @@ li:hover {
   position: relative;
 }
 
+.sidebarshow.light-mode{
+  color: rgb(255, 255, 255);
+}
+
 .sidebarshow {
   position: absolute;
   top: 45%;
-  color: rgb(0, 0, 0);
+  color: rgb(165, 165, 165);
   font-weight: bolder;
   right: -17px;
   background-color: transparent; 

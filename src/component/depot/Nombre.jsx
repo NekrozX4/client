@@ -176,6 +176,7 @@ const Nombre = ({ onHistoryClick }) => {
 
     setCSVData(updatedCSVData);
   };
+  
 
   return (
     <div>
@@ -199,15 +200,15 @@ const Nombre = ({ onHistoryClick }) => {
         <tbody>
           {csvData.map((row, index) => (
             <tr key={index}>
-              <td>{row.Env_num}</td>
-              <td>{row.Env_poids}  g</td>
-              <td>{row.Env_taxe}<span>&nbsp;</span><span>&nbsp;</span>Ar</td>
-              <td style={{ backgroundColor: verificationStatus[index]?.expediteurExists ? 'green' : 'red' }}>
-                {row.Env_exp}
-              </td>
-              <td style={{ backgroundColor: verificationStatus[index]?.destinataireExists ? 'green' : 'red' }}>
-                {row.Env_dest}
-              </td>              
+           <td>{row.Env_num}</td>
+                <td>{row.Env_poids} g</td>
+                <td>{row.Env_taxe} <span>&nbsp;</span><span>&nbsp;</span>Ar</td>
+                <td style={{ backgroundColor: verificationStatus[index]?.expediteurExists ? 'rgb(0, 128, 0,0.5)': 'rgb(255, 0, 0,0.5)'}}>
+                  {row.Env_exp}
+                </td>
+                <td style={{ backgroundColor: verificationStatus[index]?.destinataireExists ? 'rgb(0, 128, 0,0.5)' : 'rgb(255, 0, 0,0.5)' }}>
+                  {row.Env_dest}
+                </td>            
               <td>{envAgenceDepotData[index]}</td>
               <td>
                 {verificationStatus[index]?.expediteurExists && verificationStatus[index]?.destinataireExists ? (

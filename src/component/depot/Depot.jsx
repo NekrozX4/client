@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './Depot.css';
 
-const Depot = ({ onHistoryClick }) => {
+const Depot = ({ onHistoryClick, lightMode }) => {
+  
   const [expediteurName, setExpediteurName] = useState('');
   const [expediteurAddress, setExpediteurAddress] = useState('');
   const [destinataireName, setDestinataireName] = useState('');
@@ -201,8 +202,7 @@ const Depot = ({ onHistoryClick }) => {
   };
 
   return (
-    <div>
-      <div className='particulier-container'>
+     <div className={`particulier-container ${lightMode ? 'light-mode' : ''}`}>
       <h1>Particulier</h1>
       <h2 className='history' onClick={handleHistoriqueClick}>
         Deposit list
@@ -286,7 +286,6 @@ const Depot = ({ onHistoryClick }) => {
           </div>
         )}
         </div>
-      </div>
       </div>
   );
 };

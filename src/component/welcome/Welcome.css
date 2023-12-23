@@ -37,7 +37,7 @@
    transition: 0.05s ease-in-out;
    animation: fadeInDown 2s forwards;
    border: none;
-   box-shadow: 0.14em 0.2em 7px rgba(255, 255, 255);
+   box-shadow: 0.14em 0.2em 7px rgb(192, 107, 10);
 }
 
 .welcome.light-mode div:hover{
@@ -64,7 +64,7 @@
     margin: 10px;
     transition: 0.5s ease;
     margin-top: -35vh;
-    color: rgb(255, 255, 255);
+    color: rgb(224, 82, 26);
  }
  
  .welcome h2{
@@ -108,10 +108,12 @@
     }
  }
 
- .fadeinup{
-    background-image: url('../../assets/config.png');
-    background-position: 45% 50%;
- }
+ .fadeinup {
+   background-position: 45% 65%;
+   position: relative;
+   overflow: hidden;
+   background-image: url('../../assets/config.png');
+}
 
  .deposit{
     background-image: url('../../assets/deposit.png');

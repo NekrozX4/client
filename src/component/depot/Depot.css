@@ -3,6 +3,21 @@
     margin: 5vh;
   }
   
+  .input-container.light-mode div {
+    background-color: black;
+  }
+.particulier-container{
+  animation: entry 0.3s ease-in;
+}
+  
+  .particulier-container.light-mode .input-container div {
+    background-color: rgb(107, 107, 107);
+    border: none;
+  }
+  
+.input-container.light-mode div{
+  background-color: rgb(255, 255, 255);
+}
   .input-group {
     flex: 1;
     display: flex;
@@ -10,20 +25,22 @@
     gap: 10px; /* Adjust gap as needed */
     align-items: center;
     justify-content: space-evenly;
-    background-color: rgb(0, 0, 0,0.5);
     padding: 10px;
     margin: 10px;
     border-radius: 10px;
     padding: 10px;
-    
+    border: 1px solid white;
   }
   
+  .input-group.lightmode{
+    border: none;
+  }
   .send-button-container {
     margin-top: 20px; /* Adjust margin as needed */
   }
   
   .input-container input{
-    background-color: rgb(255, 255, 255,0.5);
+    background-color: rgba(255, 255, 255);
     color: rgb(0, 0, 0);
     display: flex;
     align-items: center;
@@ -32,7 +49,7 @@
     font-size: 14px;
   }
   .input-container input::placeholder{
-    color: rgb(65, 61, 61,0.5);
+    color: rgba(253, 253, 253, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -72,7 +89,7 @@
   } 
 
   .history{
-    background-color: rgb(0, 0, 0,0.5);
+    background-color: rgba(153, 74, 28, 0.5);
     width: max-content;
     padding: 10px;
     border-radius: 30px;
@@ -142,5 +159,14 @@
 }
 
 .particulier-container::-webkit-scrollbar {
-  width: 0; /* Set the width to 0 to hide the scrollbar */
+  width: 0; 
+}
+
+@keyframes entry {
+  from {
+    transform: scale(0.2);
+  }
+  to {
+    transform: scale(1);
+  }
 }

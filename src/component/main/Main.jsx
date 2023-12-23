@@ -45,11 +45,41 @@ const Main = () => {
   };
 
   const handleClickedP = (p) => {
-    setClickedP(p);
-    setShowHistorique(false);
-    setShowDetail(false);
+    console.log('Clicked component:', p);
+  
+    if (p) {
+      setClickedP(p);
+      setShowHistorique(false);
+      setShowDetail(false);
+      localStorage.setItem('lastClickedComponent', p);
+      console.log('Stored last clicked component:', p);
+    } else {
+      console.error('Invalid component name:', p);
+    }
   };
-
+  
+  
+  
+  useEffect(() => {
+    // Load the last clicked component from localStorage when the component mounts
+    const storedClickedComponent = localStorage.getItem('lastClickedComponent');
+      console.log('Stored last clicked component:', storedClickedComponent);
+      if (storedClickedComponent) {
+        setClickedP(storedClickedComponent);
+      }
+  
+    // Load the theme from localStorage when the component mounts
+    const storedMode = localStorage.getItem('lightMode');
+    if (storedMode) {
+      setLightMode(storedMode === 'true');
+    }
+  
+    const storedUser = localStorage.getItem('loggedInUser');
+    if (storedUser) {
+      setLoggedInUser(JSON.parse(storedUser));
+    }
+  
+  }, []);
   const handleWelcomeClick = (clickedSection) => {
     setClickedP(clickedSection);
   };
@@ -87,19 +117,6 @@ const Main = () => {
     });
   };
 
-  useEffect(() => {
-    // Load the theme from localStorage when the component mounts
-    const storedMode = localStorage.getItem('lightMode');
-    if (storedMode) {
-      setLightMode(storedMode === 'true');
-    }
-
-    const storedUser = localStorage.getItem('loggedInUser');
-    if (storedUser) {
-      setLoggedInUser(JSON.parse(storedUser));
-    }
-
-  }, []);
 
   // Add a class to the container based on the lightMode state
   const containerClass = lightMode ? 'container light-mode' : 'container';
@@ -113,23 +130,25 @@ const Main = () => {
     } else if (showDetail) {
       return <GroupDetail selectedGroup={selectedGroup} onClose={() => setShowDetail(false)} />;
     }
+  
     switch (clickedP) {
       case 'Particulier':
-        return <Depot onHistoryClick={handleHistoryClick} lightMode={lightMode}/>;
+        return <Depot onHistoryClick={handleHistoryClick} lightMode={lightMode} />;
       case 'nombre':
-        return <Nombre onHistoryClick={handleHistoryClick} lightMode={lightMode}/>;
+        return <Nombre onHistoryClick={handleHistoryClick} lightMode={lightMode} />;
       case 'groupement':
-        return <Configuration onDetailClick={handleShowDetail} lightMode={lightMode}/>;
+        return <Configuration onDetailClick={handleShowDetail} lightMode={lightMode} />;
       case 'user':
-        return <User lightMode={lightMode}/>;
+        return <User lightMode={lightMode} />;
       case 'destinataire':
-        return <Destinataire lightMode={lightMode}/>;
-      case 'home':
-        return  <Welcome onWelcomeClick={handleWelcomeClick} lightMode={lightMode} />;
-      default:
-        return  <Welcome onWelcomeClick={handleWelcomeClick} lightMode={lightMode} />;
+        return <Destinataire lightMode={lightMode} />;
+        case 'home':
+          return <Welcome onWelcomeClick={handleWelcomeClick} lightMode={lightMode} setLastClickedComponent={setClickedP} />;
+        default:
+          return <Welcome onWelcomeClick={handleWelcomeClick} lightMode={lightMode} setLastClickedComponent={setClickedP} />;        
     }
   };
+  
 
   return (
     <div className={containerClass}>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Welcome.css';
 
-const Welcome = ({ onWelcomeClick, lightMode }) => {
+const Welcome = ({ onWelcomeClick, lightMode, setLastClickedComponent }) => {
   const [hoveredSection, setHoveredSection] = useState(null);
 
   const handleMouseEnter = (section) => {
@@ -12,70 +12,78 @@ const Welcome = ({ onWelcomeClick, lightMode }) => {
     setHoveredSection(null);
   };
 
+  const handleH2Click = (section) => {
+    onWelcomeClick(section);
+    setLastClickedComponent(section);
+    localStorage.setItem('lastClickedComponent', section);
+  };
+
+
+  const renderH2 = (section) => (
+    <h2 onClick={() => handleH2Click(section)}>{section}</h2>
+  );
+
+  const renderDepot = () => (
+    <div className='deposit' onMouseEnter={() => handleMouseEnter('depot')} onMouseLeave={handleMouseLeave}>
+      {isSectionActive('depot') ? (
+        <>
+          {renderH2('Particulier')}
+          {renderH2('En Nombre')}
+        </>
+      ) : (
+        <h1>DEPOT</h1>
+      )}
+    </div>
+  );
+
+  const renderOperation = () => (
+    <div className='operation' onMouseEnter={() => handleMouseEnter('operations')} onMouseLeave={handleMouseLeave}>
+      {isSectionActive('operations') ? (
+        <h2>coming soon</h2>
+      ) : (
+        <h1>OPERATION</h1>
+      )}
+    </div>
+  );
+
+  const renderEdition = () => (
+    <div className='edit' onMouseEnter={() => handleMouseEnter('edition')} onMouseLeave={handleMouseLeave}>
+      {isSectionActive('edition') ? (
+        <>
+          {renderH2('Registre')}
+          {renderH2('F12')}
+          {renderH2('Etats')}
+        </>
+      ) : (
+        <h1>EDITION</h1>
+      )}
+    </div>
+  );
+
+  const renderConfiguration = () => (
+    <div className='fadeinup' onMouseEnter={() => handleMouseEnter('configuration')} onMouseLeave={handleMouseLeave}>
+      {isSectionActive('configuration') ? (
+        <>
+          {renderH2('Groupement')}
+          {renderH2('Utilisateur')}
+          {renderH2('Destinataire')}
+        </>
+      ) : (
+        <h1>CONFIGURATION</h1>
+      )}
+    </div>
+  );
+
   const isSectionActive = (section) => {
     return hoveredSection === section;
   };
 
   return (
     <div className={`welcome ${lightMode ? 'light-mode' : ''}`}>
-      <div
-        className='deposit'
-        onMouseEnter={() => handleMouseEnter('depot')}
-        onMouseLeave={handleMouseLeave}
-      >
-        {isSectionActive('depot') ? (
-          <>
-            <h2 onClick={() => onWelcomeClick('Particulier')}>Particulier</h2>
-            <h2 onClick={() => onWelcomeClick('nombre')}>En Nombre</h2>
-          </>
-        ) : (
-          <h1>DEPOT</h1>
-        )}
-      </div>
-
-      <div
-        className='operation'
-        onMouseEnter={() => handleMouseEnter('operations')}
-        onMouseLeave={handleMouseLeave}
-      >
-        {isSectionActive('operations') ? (
-          <h2>coming soon</h2>
-        ) : (
-          <h1>OPERATION</h1>
-        )}
-      </div>
-
-      <div 
-        className='edit'
-        onMouseEnter={() => handleMouseEnter('edition')}
-        onMouseLeave={handleMouseLeave}
-      >
-        {isSectionActive('edition') ? (
-          <>
-            <h2>Registre</h2>
-            <h2>F12</h2>
-            <h2>Etats</h2>
-          </>
-        ) : (
-          <h1>EDITION</h1>
-        )}
-      </div>
-
-      <div 
-        className='fadeinup'
-        onMouseEnter={() => handleMouseEnter('configuration')}
-        onMouseLeave={handleMouseLeave}
-      >
-        {isSectionActive('configuration') ? (
-          <>
-            <h2 onClick={() => onWelcomeClick('groupement')}>Groupement</h2>
-            <h2 onClick={() => onWelcomeClick('user')}>Utilisateur</h2>
-            <h2 onClick={() => onWelcomeClick('destinataire')}>Destinataire</h2>
-          </>
-        ) : (
-          <h1>CONFIGURATION</h1>
-        )}
-      </div>
+      {renderDepot()}
+      {renderOperation()}
+      {renderEdition()}
+      {renderConfiguration()}
     </div>
   );
 };
