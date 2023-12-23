@@ -152,6 +152,10 @@
   width: 8vw;
 }
 
+.nbr-table {
+  margin-top: 4vh;
+}
+
 .particulier-container {
   margin-top: 2vh;
   max-height: 90vh;
@@ -169,4 +173,18 @@
   to {
     transform: scale(1);
   }
+}
+
+.label {
+  background-color: #4b4b4b;
+  padding: 20px;
+  margin: 10px;
+  cursor: pointer;
+  margin-bottom: 5vh;
+  border-radius: 10px;
+  transition: transform 0.3s; 
+}
+
+.label:hover {
+  background-color: #333333;
 }

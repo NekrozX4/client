@@ -183,7 +183,10 @@ const Nombre = ({ onHistoryClick }) => {
       <h2 className='history' onClick={handleHistoriqueClick}>
         Deposit list
       </h2>
-      <input type="file" accept=".csv" onChange={handleFileUpload} />
+      <label htmlFor='fileInput' className='label'>
+            Importer un fichier exel
+          </label>
+      <input type='file' id='fileInput' accept='.csv' onChange={handleFileUpload} />
       <table className='nbr-table'>
         <thead>
           <tr>

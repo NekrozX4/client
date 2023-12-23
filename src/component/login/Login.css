@@ -36,7 +36,7 @@
   .login-section {
     flex: 1; 
     padding: 20px;
-    background-color: rgba(24, 24, 24); 
+    background-color: rgb(19, 18, 18); 
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     color : white;

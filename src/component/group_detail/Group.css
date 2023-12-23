@@ -9,3 +9,21 @@
     padding: 20px;
     margin: 10px;
 }
+
+.detail-container{
+  animation : detail 0.2s ease-in;
+  width : 100vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes detail {
+  from {
+    transform:  scale(0.2);
+  }
+  to {
+    transform: scale(1);
+  }
+}

@@ -21,6 +21,7 @@ const Main = () => {
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [showDetail, setShowDetail] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState(true);
+  
   const [lightMode, setLightMode] = useState(() => {
     // Load the theme from localStorage or default to false (dark mode)
     const storedMode = localStorage.getItem('lightMode');

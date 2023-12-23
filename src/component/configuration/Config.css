@@ -3,6 +3,7 @@
     justify-content: space-between;
     padding: 20px;
     margin-right: 20vw;
+    animation : groupement 1s ease-in
   
   }
   
@@ -57,4 +58,11 @@
     margin : 5px
   }
   
-  
+  @keyframes groupement {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
