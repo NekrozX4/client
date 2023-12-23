@@ -5,8 +5,9 @@
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background-image: url('../../assets/post_office.jpg');
+  background-image: url('../../assets/OFFICE.jpg');
   background-size: cover;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .main-container::before {
@@ -16,7 +17,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0,0.1);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 1; 
 }
 
@@ -29,6 +30,7 @@
     background-color: none;
     border-radius: 10px;
     z-index: 55;
+    box-shadow: 0.14em 0.2em 20px rgb(185, 173, 4);
   }
   
   .login-section {
@@ -146,8 +148,7 @@
     background-position: 50% 50%;
     margin-top: -10vh;
   }
-
-  .error-popup {
+  .error {
     position: fixed;
     top: 0;
     left: 0;
@@ -157,31 +158,39 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Ensure it's above other elements */
+    z-index: 1001; /* Ensure it's above other elements */
   }
   
-  .popup-content {
-    background: #fff; /* White background */
+  .popup {
+    background: #a7a7a7; /* White background */
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle effect */
     text-align: center;
+    opacity: 1; /* Set opacity to 1 */
+    color: #fd0000;
   }
   
-  .popup-content p {
+  .popup-p {
     margin-bottom: 15px;
+    color: #fd0000;
   }
   
-  .popup-content button {
+  .popup button {
     padding: 10px 20px;
     background: #007BFF; /* Button color */
-    color: #fff;
+    color: #fd0000;
     border: none;
     border-radius: 5px;
     cursor: pointer;
   }
   
-  .popup-content button:hover {
+  .popup button:hover {
+    background: #0056b3; /* Hover color */
+  }
+  
+  
+  .popup button:hover {
     background: #0056b3; /* Hover color */
   }
   .input-error {
@@ -192,3 +201,22 @@
     color: red;
   }
   
+  .success-login {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(36, 34, 34, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+  }
+
+  .success-login-content{
+    background-color: rgb(4, 100, 4);
+    padding: 10px;
+    border-radius: 25px;
+    font-weight: bolder;
+  }
