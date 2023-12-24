@@ -157,21 +157,6 @@ const Main = () => {
       <header className={headerClass}>
         <div className='poste'></div>
         <div className='home' onClick={() => handleClickedP('home')}></div>
-        <div className="search-bar">
-          <form onSubmit={handleSearchSubmit}>
-            <input
-              type="text"
-              placeholder="Search..."
-              value={searchTerm}
-              onChange={handleSearchChange}
-            />
-            <button type="submit">
-              <span role="img" aria-label="Search">
-                🔍
-              </span>
-            </button>
-          </form>
-        </div>
         <div className='user-class'>
         <div className='user-name'>{loggedInUser?.Us_nom}</div>
         <div

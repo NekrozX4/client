@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Historique.css';
 import { parse, format } from 'date-fns';
 
-const Historique = () => {
+const Historique = ( { lightMode } ) => {
   const [historiqueData, setHistoriqueData] = useState([]);
   const [beneficiaryData, setBeneficiaryData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -107,7 +107,7 @@ const Historique = () => {
   };
 
   return (
-    <div className='historique-container'>
+    <div className={`historique-container ${lightMode ? 'light-mode' : ''}`}>
       <div className='history-header'>
         <div className='sorting metho'>
       <h1>Deposit list</h1>

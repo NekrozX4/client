@@ -93,6 +93,7 @@ const Welcome = ({ onWelcomeClick, lightMode, setLastClickedComponent }) => {
 
   return (
     <div className={`welcome ${lightMode ? 'light-mode' : ''}`}>
+     
       {renderDepot()}
       {renderOperation()}
       {renderEdition()}

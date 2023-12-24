@@ -6,14 +6,27 @@
     animation : groupement 1s ease-in
   
   }
-  
+
+ 
+  .title{
+    margin-top: -5vh;
+    position: fixed;
+  }
   .custom-form-container {
     width: 30vw;
     margin-left: -10vw;
     margin-right: 100px;
-
   }
-  
+
+  .light-mode .detail-button{
+    background-color: rgb(255, 217, 0);
+  }
+  .detail-button{
+    background-color: rgb(255, 251, 0);
+  }
+  .light-mode .custom-delete-button {
+    background-color: rgb(105, 0, 0);
+  }
   .custom-list-container {
     width: 60vw;
     margin-right: -35vw;
@@ -40,7 +53,7 @@
     border-collapse: collapse;
     margin-top: 20px;
   }
-  
+
   .custom-table th,
   .custom-table td {
     border: 1px solid #ddd;

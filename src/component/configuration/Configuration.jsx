@@ -215,7 +215,7 @@ function Configuration({onDetailClick}) {
       </div>
 
       <div className="custom-list-container">
-        <h2>Liste des Groupements</h2>
+        <h2 className="title">Liste des Groupements</h2>
         <table className="custom-table"> 
           <thead>
             <tr>
@@ -238,7 +238,7 @@ function Configuration({onDetailClick}) {
                 <td>{group.Grp_type}</td>
                 <td>
                   <button
-                    className="custom-button"
+                    className="custom-delete-button"
                     onClick={() => handleDeleteGroup(group.Grp_id)}
                   >
                     Delete
@@ -251,7 +251,7 @@ function Configuration({onDetailClick}) {
                   </button>
                 </td>
                 <td>
-                <button onClick={() => showDetail(group)}>voir Details</button>
+                <button className= "detail-button" onClick={() => showDetail(group)}>voir Details</button>
                 </td>
               </tr>
             ))}

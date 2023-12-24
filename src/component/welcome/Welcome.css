@@ -11,8 +11,7 @@
 }
 .welcome.light-mode h1{
    background-color: none;
-   color: #000000;
-   /* Add other light mode styles */
+   color: #003cff;
  }
  
 .welcome.light-mode{
@@ -20,7 +19,8 @@
 }
 .welcome.light-mode div{
    box-shadow: none;
-   box-shadow: 0.14em 0.2em 7px rgb(95, 89, 63);
+  border: 5px solid #3b3ba0;
+  border-radius: 0px;
 }
 .welcome div {
    padding: 10px;
@@ -37,25 +37,20 @@
    transition: 0.05s ease-in-out;
    animation: fadeInDown 2s forwards;
    border: none;
-   box-shadow: 0.14em 0.2em 7px rgb(185, 173, 4);
+   box-shadow: 0.14em 0.2em 7px rgb(255, 238, 0);
 }
 
 .welcome.light-mode div:hover{
-   background-color: #736e62;
+   background-color: #c9c9c9;
    color: black;
+   border: none;
 
 }
 
-.welcome.light-mode div{
-   border: none;
-   background-color: NONE;
-   border: none;
-}
 .welcome div:hover{
     background-color: rgb(24, 24, 24);
     color: rgb(255, 255, 255);
-    height: 50vh;
-    width: 50vw;
+    width: 30vw;
     background-image: none;
 }
  .welcome h1{
@@ -64,7 +59,7 @@
     margin: 10px;
     transition: 0.5s ease;
     margin-top: -35vh;
-    color: rgb(110, 91, 4);
+    color: rgb(172, 140, 0);
  }
  
  .welcome h2{
@@ -73,6 +68,7 @@
     justify-content: center;
     width: 90%;
     font-size: 35px;
+    transition: 0.5s;
  }
  
  .welcome h1:hover{
@@ -86,9 +82,14 @@
  .welcome h2:hover{
     cursor: pointer;
     transform: scale(1.1);
-    background-color: rgba(102, 102, 102, 0.8);
-    color: rgb(0, 0, 0);
+    background-color:none;
+    color: rgb(99, 100, 1);
     border-radius: 20px;
+ }
+
+ .welcome.welcome.light-mode h2:hover{
+   background-color: none;
+   color: rgb(175, 7, 7);
  }
  @keyframes fadeInDown {
     from{

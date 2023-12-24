@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Papa from 'papaparse';
 import './Depot.css';
 
-const Nombre = ({ onHistoryClick }) => {
+const Nombre = ({ onHistoryClick, lightMode }) => {
   const [csvData, setCSVData] = useState([]);
   const [verificationStatus, setVerificationStatus] = useState([]);
   const [envAgenceDepotData, setEnvAgenceDepotData] = useState([]);
@@ -179,7 +179,7 @@ const Nombre = ({ onHistoryClick }) => {
   
 
   return (
-    <div>
+    <div className={`nombre ${lightMode ? 'light-mode' : ''}`}>
       <h2 className='history' onClick={handleHistoriqueClick}>
         Deposit list
       </h2>

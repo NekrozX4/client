@@ -2,7 +2,15 @@
     display: flex;
     flex-direction: column;
   }
-  
+
+.light-mode .input-first{
+  border: 3px solid blue;
+  border-radius: 0;
+}
+.light-mode .input-destinataire-group{
+  border: 3px solid blue;
+  border-radius: 0;
+}
   .input-container {
     display: flex;
     width: fit-content;
@@ -13,28 +21,29 @@
     flex-direction: column;
     gap: 10px;
     align-items: center;
-    justify-content: space-evenly;
-    background-color: rgb(0, 0, 0, 0.5);
+    justify-content: space-evenly; 
+    border: 1px solid yellow;
     padding: 10px;
     margin: 10px;
     border-radius: 10px;
     width: 15vw;
   }
-  .input-group {
+  .input-destinataire-group {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-items: center;
     justify-content: space-evenly;
-    background-color: rgb(0, 0, 0, 0.5);
+    background-color: none;
     padding: 10px;
     margin: 10px;
+    border: 1px solid yellow;
     border-radius: 10px;
     width: fit-content;
   }
   
-  .input-group input {
+  .input-destinataire-group input {
     background-color: rgb(255, 255, 255, 0.5);
     color: rgb(0, 0, 0);
     display: flex;
@@ -43,15 +52,16 @@
     caret-color: white;
     font-size: 14px;
     margin: 10px;
+    border: 1px solid black;
     padding: 5px;
   }
-  .input-group button{
+  .input-destinataire-group button{
     display: flex;
     align-items: center;
     justify-content: center;
     margin: auto;
   }
-  .input-group input::placeholder {
+  .input-destinataire-group input::placeholder {
     color: rgb(65, 61, 61, 0.5);
     display: flex;
     align-items: center;

@@ -13,6 +13,15 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
+      // Reset input error state before attempting login
+      setShowInputError(false);
+  
+      // Validate if email and password are provided
+      if (!email || !password) {
+        setShowInputError(true);
+        return;
+      }
+  
       const usersResponse = await fetch('http://localhost:8081/utilisateur');
       const usersData = await usersResponse.json();
   
@@ -51,7 +60,6 @@ const Login = () => {
       setShowErrorPopup(true);
     }
   };
-  
 
   useEffect(() => {
     // Close the error popup after 3000 milliseconds (adjust as needed)
@@ -100,7 +108,7 @@ const Login = () => {
             {showPassword ? 'Hide Password' : 'Show Password'}
           </p>
           <br />
-          <button type='button' onClick={handleLogin}>
+          <button type='button' className = 'login-btn' onClick={handleLogin}>
             LOGIN
           </button>
         </div>

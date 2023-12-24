@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Destinataire.css';
 import Papa from 'papaparse';
 
-const Destinataire = () => {
+const Destinataire = ({ lightMode }) => {
   const [formData, setFormData] = useState({
     Grp_code: '',
     Ben_Nom: '',
@@ -15,9 +15,6 @@ const Destinataire = () => {
   const [errorPopup, setErrorPopup] = useState(false);
   const [fileName, setFileName] = useState('');
 
-  const handleFileSelection = () => {
-    document.getElementById('fileInput').click();
-  };
 
   const parseCSV = (content) => {
     try {
@@ -156,7 +153,7 @@ const Destinataire = () => {
   };
 
   return (
-    <div className='destinataire-container'>
+    <div  className={`destinataire-container${lightMode ? 'light-mode' : ''}`}>
       <h1>Destinataire</h1>
 
       <div className='input-container'>
@@ -171,7 +168,7 @@ const Destinataire = () => {
           </button>
         </div>
 
-        <div className='input-group'>
+        <div className='input-destinataire-group'>
           <h2>Destinataire unique</h2>
           <form onSubmit={handleSubmit}>
             <input
