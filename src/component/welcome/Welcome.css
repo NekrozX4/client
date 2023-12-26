@@ -35,7 +35,7 @@
    border-radius: 40px;
    cursor: pointer;
    transition: 0.05s ease-in-out;
-   animation: fadeInDown 2s forwards;
+   animation: fadeInDown 1s forwards;
    border: none;
    box-shadow: 0.14em 0.2em 7px rgb(255, 238, 0);
 }
@@ -91,23 +91,6 @@
    background-color: none;
    color: rgb(175, 7, 7);
  }
- @keyframes fadeInDown {
-    from{
-        transform: translateY(100vh);
-    }
-    to{
-        transform: translateY(0);
-    }
- }
-
- @keyframes fadeInUp {
-    from{
-        transform: translateY(-100vh);
-    }
-    to{
-        transform: translateY(0);
-    }
- }
 
  .fadeinup {
    background-position: 45% 65%;
@@ -132,9 +115,9 @@
  }
  @keyframes fadeInDown {
    from {
-       transform: translateX(100vw);
+       transform: scaleY(0);
    }
    to {
-       transform: translateX(0);
+       transform: scaleY(1) ;
    }
 }
