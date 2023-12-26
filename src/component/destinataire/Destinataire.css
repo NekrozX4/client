@@ -226,3 +226,7 @@
 .label-file:hover p {
   display: block;
 }
+
+.ajouter-button{
+  background-color: rgb(255, 217, 0);
+}

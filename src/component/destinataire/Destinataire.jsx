@@ -163,7 +163,7 @@ const Destinataire = ({ lightMode }) => {
           </label>
           <input type='file' id='fileInput' accept='.csv' onChange={handleFileChange} />
           <div>{fileName && `Fichier selectioné: ${fileName}`}</div>
-          <button type='button' onClick={handleSendDataButtonClick}>
+          <button className = "ajouter-button" type='button' onClick={handleSendDataButtonClick}>
             Ajouter
           </button>
         </div>
@@ -199,7 +199,7 @@ const Destinataire = ({ lightMode }) => {
               value={formData.Ben_code}
               onChange={handleChange}
             />
-            <button type='submit'>Ajouter</button>
+            <button className = "ajouter-button" type='submit'>Ajouter</button>
           </form>
         </div>
         {successPopup && (

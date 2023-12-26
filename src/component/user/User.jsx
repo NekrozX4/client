@@ -159,7 +159,7 @@ function User({ lightMode })  {
           <div className="custom-form-element">
           <div className="custom-form-element">
   <label htmlFor="Fo_id" className="custom-label">
-    Fonction_ID
+    Fonction
   </label>
   <select
     id="Fo_id"
@@ -179,7 +179,7 @@ function User({ lightMode })  {
 
 <div className="custom-form-element">
   <label htmlFor="Grp_id" className="custom-label">
-    Group ID
+    Group_code
   </label>
   <input
     type="text"
@@ -207,8 +207,8 @@ function User({ lightMode })  {
               <th>Matricule</th>
               <th>Login</th>
               <th>Email</th>
-              <th>Fo_id</th>
-              <th>Grp_id</th>
+              <th>Fonction</th>
+              <th>Grp_code</th>
               <th>Action</th>
             </tr>
           </thead>

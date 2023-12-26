@@ -13,10 +13,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      // Reset input error state before attempting login
       setShowInputError(false);
-  
-      // Validate if email and password are provided
       if (!email || !password) {
         setShowInputError(true);
         return;
@@ -30,27 +27,19 @@ const Login = () => {
       );
   
       if (user) {
+        localStorage.setItem('loggedInUser', JSON.stringify(user));
+        console.log('Logged-in user data:', user);
+        console.log('Login successful! Redirecting to user profile');
+        setShowSuccessPopup(true);
+
         if (user.Fo_id === 1) {
-          localStorage.setItem('loggedInUser', JSON.stringify(user));
-          console.log('Logged-in user data:', user);
-          console.log('Login successful! Redirecting to user profile');
-          setShowSuccessPopup(true);
-  
-          // Delay the navigation after showing the success popup
-          setTimeout(() => {
-            navigate(`/main/${user.Us_matricule}`, {
-              state: { loggedInUser: user },
-            });
-          }, 3000); // Adjust the delay as needed
+          navigate(`/main/${user.Us_matricule}`, {
+            state: { loggedInUser: user },
+          });
         } else if (user.Fo_id === 2) {
-          console.log('User does not have admin privileges.');
-          setShowSuccessPopup(true);
-  
-          // Delay the navigation after showing the success popup
-          setTimeout(() => {
-            navigate('/saisie');
-          }, 3000); // Adjust the delay as needed
+          navigate('/saisie');
         }
+        window.location.reload();
       } else {
         console.log('Invalid credentials.');
         setShowErrorPopup(true);
@@ -60,19 +49,30 @@ const Login = () => {
       setShowErrorPopup(true);
     }
   };
-
+  
   useEffect(() => {
-    // Close the error popup after 3000 milliseconds (adjust as needed)
+  
     const timeoutId = setTimeout(() => {
       setShowErrorPopup(false);
-      setShowSuccessPopup(false); // Corrected from showSuccessPopup to setShowSuccessPopup
+      setShowSuccessPopup(false);
+  
+      if (!showErrorPopup && showSuccessPopup) {
+        if (user.Fo_id === 1) {
+          navigate(`/main/${user.Us_matricule}`, {
+            state: { loggedInUser: user },
+          });
+          
+        } else if (user.Fo_id === 2) {
+          navigate('/saisie');
+        }
+      }
     }, 3000);
   
     return () => {
       clearTimeout(timeoutId);
     };
   }, [showErrorPopup, showSuccessPopup]);
-
+  
   
   
 

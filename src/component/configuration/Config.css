@@ -68,7 +68,7 @@
   
   .change {
     padding: 5px;
-    margin : 5px
+    margin : 5px;
   }
   
   @keyframes groupement {
@@ -78,4 +78,13 @@
     to {
       opacity: 1;
     }
+  }
+
+  .custom-delete-button{
+    background-color: rgb(90, 0, 0);
+    color: white;
+  }
+
+  .custom-delete-button:hover{
+    background-color: rgb(90, 0, 0);
   }

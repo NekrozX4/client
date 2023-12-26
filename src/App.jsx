@@ -7,12 +7,23 @@ import Saisie from './component/saisie/Saisie';
 
 function App() {
 
+  const isLoggedIn = () => {
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    return !!loggedInUser; 
+  };
+  const usMatricule = JSON.parse(localStorage.getItem('loggedInUser'))?.Us_matricule;
+
   return (
     <Router>
       <Routes>
         <Route path='/' element = {<Login />} />
         <Route path='/saisie' element = { <Saisie />} />
-        <Route path='/main/:userLogin' element={<Main />} />
+        <Route
+            key={usMatricule}
+            path={`/main/${usMatricule}`}
+            element={<Main />}
+          />
+
         <Route path='/remove' element = {<RemoveUser />} />
       </Routes>
     </Router>

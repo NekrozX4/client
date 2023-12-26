@@ -244,7 +244,7 @@ function Configuration({onDetailClick}) {
                     Delete
                   </button>
                   <button
-                    className="custom-button"
+                    className="custom-edit-button"
                     onClick={() => handleEditGroup(group)}
                   >
                     Edit

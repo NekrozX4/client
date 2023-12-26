@@ -28,15 +28,15 @@ const Main = () => {
     return storedMode === 'true';
   });
 
-  const logout = () => {
-    navigate('/');
-  };
-  
-  
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
 
+const Logout = () => {
+ 
+  localStorage.removeItem('loggedInUser');
+
+  navigate('/');
+};
+
+  
   const handleMouseEnter = (section) => {
     setClickedDiv(section);
   };
@@ -94,11 +94,6 @@ const Main = () => {
     setShowDropdown(null);
   };
 
-  const handleSearchSubmit = (event) => {
-    event.preventDefault();
-    // Handle search submission logic if needed
-    console.log('Search submitted:', searchTerm);
-  };
 
   const handleHistoryClick = () => {
     setShowHistorique(true);
@@ -168,7 +163,7 @@ const Main = () => {
             <div className="dropdown-content">
               <div>Modification</div>
               <div>Pass</div>
-              <div onClick={logout}>Se deconnecter</div>
+              <div onClick={Logout}>Se deconnecter</div>
               <input
                   type="checkbox"
                   id="themeToggle"
