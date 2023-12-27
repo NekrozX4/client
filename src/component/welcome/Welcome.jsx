@@ -17,8 +17,8 @@ const Welcome = ({ onWelcomeClick, lightMode, setLastClickedComponent }) => {
     setLastClickedComponent(section);
     localStorage.setItem('lastClickedComponent', section);
   };
-  
-  
+
+ 
   
   const isSectionActive = (section) => {
     return hoveredSection === section;
@@ -41,7 +41,11 @@ const Welcome = ({ onWelcomeClick, lightMode, setLastClickedComponent }) => {
   );
 
   const renderDepot = () => (
-    <div className='deposit' onMouseEnter={() => handleMouseEnter('depot')} onMouseLeave={handleMouseLeave}>
+    <div
+      className='deposit'
+      onMouseEnter={() => handleMouseEnter('depot')}
+      onMouseLeave={handleMouseLeave}
+    >
       {isSectionActive('depot') ? (
         <>
           {renderH2('Particulier')}

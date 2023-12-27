@@ -9,6 +9,7 @@ const Login = () => {
   const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false)
   const [showInputError, setShowInputError] = useState(false);
+  const [loggedInUser, setLoggedInUser] = useState(null);
   const navigate = useNavigate('');
 
   const handleLogin = async () => {
@@ -28,15 +29,18 @@ const Login = () => {
   
       if (user) {
         localStorage.setItem('loggedInUser', JSON.stringify(user));
+        setLoggedInUser(user);
         console.log('Logged-in user data:', user);
         console.log('Login successful! Redirecting to user profile');
         setShowSuccessPopup(true);
 
         if (user.Fo_id === 1) {
+          setShowSuccessPopup(true);
           navigate(`/main/${user.Us_matricule}`, {
             state: { loggedInUser: user },
           });
         } else if (user.Fo_id === 2) {
+          setShowSuccessPopup(true);
           navigate('/saisie');
         }
         window.location.reload();
@@ -50,19 +54,19 @@ const Login = () => {
     }
   };
   
-  useEffect(() => {
   
+  useEffect(() => {
     const timeoutId = setTimeout(() => {
       setShowErrorPopup(false);
       setShowSuccessPopup(false);
   
-      if (!showErrorPopup && showSuccessPopup) {
-        if (user.Fo_id === 1) {
-          navigate(`/main/${user.Us_matricule}`, {
-            state: { loggedInUser: user },
+
+      if (!showErrorPopup && showSuccessPopup && loggedInUser) {
+        if (loggedInUser.Fo_id === 1) {
+          navigate(`/main/${loggedInUser.Us_matricule}`, {
+            state: { loggedInUser: loggedInUser },
           });
-          
-        } else if (user.Fo_id === 2) {
+        } else if (loggedInUser.Fo_id === 2) {
           navigate('/saisie');
         }
       }
@@ -71,7 +75,8 @@ const Login = () => {
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [showErrorPopup, showSuccessPopup]);
+  }, [showErrorPopup, showSuccessPopup, loggedInUser, navigate]);
+  
   
   
   

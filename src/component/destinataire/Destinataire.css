@@ -4,11 +4,11 @@
   }
 
 .light-mode .input-first{
-  border: 3px solid blue;
+  border: 3px solid rgb(0, 0, 0);
   border-radius: 0;
 }
 .light-mode .input-destinataire-group{
-  border: 3px solid blue;
+  border: 3px solid rgb(0, 0, 0);
   border-radius: 0;
 }
   .input-container {
