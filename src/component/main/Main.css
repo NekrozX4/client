@@ -448,7 +448,7 @@
 }
 
 .sign svg path {
-  fill: rgb(0, 0, 0);
+  fill: rgb(255, 196, 0);
 }
 
 .text {
@@ -459,7 +459,8 @@
   font-weight: bolder;
   transition-duration: 0.3s;
   z-index: 1000;
-  transform: translateX(55%);
+  transform: translateY(-100%) ;
+  opacity: 0;
 }
 
 .Btn:hover {
