@@ -8,6 +8,7 @@ import Destinataire from '../destinataire/Destinataire';
 import Configuration from '../configuration/Configuration';
 import Welcome from '../welcome/Welcome';
 import Historique from '../historique/Historique';
+import F12 from '../F12/F12';
 import GroupDetail from '../group_detail/GroupDetail';
 import '../../App.css'
 
@@ -132,6 +133,8 @@ const Logout = () => {
           return <Depot onHistoryClick={handleHistoryClick} lightMode={lightMode} />;
         case 'En nombre':
           return <Nombre onHistoryClick={handleHistoryClick} lightMode={lightMode} />;
+          case 'F12' :
+          return <F12 />
         case 'Groupement': 
           return <Configuration onDetailClick={handleShowDetail} lightMode={lightMode} />;
         case 'Utilisateur':
@@ -174,14 +177,14 @@ const Logout = () => {
         </div>
       )}
     </div>
-        <label class="ui-switch">
+        <label className="ui-switch">
                 <input type="checkbox"
                 id="themeToggle"
                 onChange={toggleTheme}
                 checked={lightMode}
                 className="theme-toggle"/>
-                <div class="slider">
-                  <div htmlFor="themeToggle" class="circle"></div>
+                <div className="slider">
+                  <div htmlFor="themeToggle" className="circle"></div>
                 </div>
               </label>
         </div>
@@ -208,7 +211,7 @@ const Logout = () => {
             {clickedDiv === 'edition' && (
               <>
                 <p>Registre</p>
-                <p>F12</p>
+                <p onClick={() => handleClickedP('F12')}>F12</p>
                 <p>Etats</p>
               </>
             )}

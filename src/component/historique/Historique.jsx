@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './Historique.css';
 import { parse, format } from 'date-fns';
 
+
+
 const Historique = ( { lightMode } ) => {
   const [historiqueData, setHistoriqueData] = useState([]);
   const [beneficiaryData, setBeneficiaryData] = useState([]);
@@ -105,7 +107,11 @@ const Historique = ( { lightMode } ) => {
     setSearchResults([]);
     setShowSearchResults(false);
   };
+  
+   
 
+  
+  
   return (
     <div className={`historique-container ${lightMode ? 'light-mode' : ''}`}>
       <div className='history-header'>
@@ -166,16 +172,17 @@ const Historique = ( { lightMode } ) => {
             ))}
           </div>
         ) : (
-          <div className='historique-list'>
-            {Object.keys(organizedData).map((groupKey) => (
-              <div className='grouping' key={groupKey}>
-                <h2>{`${groupBy === 'address' ? 'Address' : 'Agence'}: ${groupKey} (${
-                  organizedData[groupKey].length !== 1
-                    ? `nombre de depots: ${organizedData[groupKey].length}`
-                    : 'nombre de depot: 1'
-                })`}</h2>
-
-                {organizedData[groupKey].map((envoi) => (
+          <div className='historique list'>
+        {Object.keys(organizedData).map((groupKey) => (
+          <div className='grouping' key={groupKey}>
+            <h2>
+              {`${groupBy === 'address' ? 'Address' : 'Agence'}: ${groupKey} (${
+                organizedData[groupKey].length !== 1
+                  ? `nombre de depots: ${organizedData[groupKey].length}`
+                  : 'nombre de depot: 1'
+              })`}
+            </h2>
+            {organizedData[groupKey].map((envoi) => (
                   <div key={envoi.Env_id} className='historique-item'>
                     <p>
                       <strong>From:</strong> {envoi.Env_exp}
@@ -202,7 +209,7 @@ const Historique = ( { lightMode } ) => {
             ))}
           </div>
         )}
-      </div>
+        </div>
     </div>
   );
 };

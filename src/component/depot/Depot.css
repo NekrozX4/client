@@ -11,12 +11,13 @@
   
   .particulier-container.light-mode .input-container div {
     background-color: transparent;
-    border: 3px solid rgb(0, 0, 0);
-    border-radius: 0;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 10px;
   }
 
   .particulier-container.light-mode.input-container input{
     border: 1px solid black;
+    border-radius: 10px;
   }
 .light-mode.input-container div{
   background-color: rgb(255, 255, 255);

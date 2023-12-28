@@ -141,16 +141,16 @@ const Depot = ({ onHistoryClick, lightMode }) => {
   
     
 
-  const verifyBeneficiaire = async (name, address) => {
+  const verifyBeneficiaire = async (name) => {
     try {
-      const response = await fetch(`http://localhost:8081/benefs?Ben_Nom=${name}&Ben_Addresse=${address}`);
+      const response = await fetch(`http://localhost:8081/benefs?Ben_Nom=${name}&`);
       const beneficiaireData = await response.json();
 
       console.log(`Verifying ${name}:`, beneficiaireData);
 
       return beneficiaireData.some(
         (beneficiaire) =>
-          beneficiaire.Ben_Nom === name && beneficiaire.Ben_Addresse === address
+          beneficiaire.Ben_Nom === name
       );
     } catch (error) {
       console.error('Error verifying beneficiaire:', error);
