@@ -147,7 +147,7 @@ pdf.autoTable({
 
   pdf.text('', pdf.internal.pageSize.getWidth() / 2, pdf.autoTable.previous.finalY + 10);
 
-    const agenceText = `Agence: ${groupKey}`;
+    const agenceText = `Bureau d'origine: ${groupKey}`;
     pdf.text(agenceText, pdf.internal.pageSize.getWidth() / 2, pdf.autoTable.previous.finalY + 10, { align: 'center' });
 
       

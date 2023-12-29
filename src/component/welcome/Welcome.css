@@ -19,9 +19,8 @@
 }
 .welcome.light-mode div{
    box-shadow: none;
-/* 
-  border: 5px solid #3b3ba0; */
-  box-shadow: 0.14em 0.2em 15px rgb(6, 2, 255);
+  /* border: 5px solid #3b3ba0; */
+  box-shadow: 0.14em 0.2em 17px #3b3ba0;;
   border-radius: 40px;
 }
 .welcome div {
@@ -52,7 +51,6 @@
 .welcome div:hover{
     background-color: rgb(24, 24, 24);
     color: rgb(255, 255, 255);
-    width: 30vw;
     background-image: none;
 }
  .welcome h1{
@@ -123,3 +121,63 @@
        transform: scaleY(1) ;
    }
 }
+/* Your existing styles */
+
+.image-tooltip {
+   position: absolute;
+   top: 50%;
+   left: 50%; 
+   transform: translate(-50%, -50%);
+   display: none;
+ }
+ 
+ .deposit:hover .image-tooltip {
+   display: block; 
+   animation: slideFromMiddleToTop 0.5s ease-out; 
+ }
+ 
+ @keyframes slideFromMiddleToTop {
+   from {
+     top: 50%;
+   }
+   to {
+     top: 0; 
+   }
+ }
+ .flip-container {
+   perspective: 1000px;
+   width: 100%;
+   height: 100%;
+   cursor: pointer;
+ }
+ 
+ .flipper {
+   width: 100%;
+   height: 100%;
+   transform-style: preserve-3d;
+   transition: transform 0.8s;
+ }
+ 
+ .front,
+ .back {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   backface-visibility: hidden;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+ 
+ .front {
+   transform: rotateY(0deg);
+ }
+ 
+ .back {
+   transform: rotateY(180deg);
+ }
+ 
+ .flip-container.hover .flipper {
+   transform: rotateY(180deg);
+ }
+ 

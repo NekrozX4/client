@@ -79,15 +79,12 @@ const Depot = ({ onHistoryClick, lightMode }) => {
         Env_agence_depot: Env_agence_depot,
       };
   
-      // Call a function to send the envoi data to the server or handle it accordingly
       const response = await sendEnvoiData(envoiData);
   
-      // Check if the response has an error property
       if (response && response.error) {
         throw new Error(`Failed to send envoi data: ${response.error}`);
       }
   
-      // If the envoi is successfully added, you can handle it here
       console.log('Envoi added successfully!');
       setSuccessPopup(true);
   
@@ -100,26 +97,22 @@ const Depot = ({ onHistoryClick, lightMode }) => {
       setNumero('');
       setMontant('');
       setPoids('');
-      setGrpCode(''); // Reset grpCode
+      setGrpCode(''); 
   
-      // Hide success popup after a delay (3000 milliseconds)
       setTimeout(() => {
         setSuccessPopup(false);
       }, 3000);
     } catch (error) {
       console.error('Error handling envoi:', error);
   
-      // If there's an error, set error popup to true
       setErrorPopup(true);
   
-      // Hide error popup after a delay (3000 milliseconds)
       setTimeout(() => {
         setErrorPopup(false);
       }, 3000);
     }
   };
       
-  // Add a new function to fetch beneficiaire group code
   const fetchBeneficiaireGroupCode = async (name) => {
     try {
       const response = await fetch(`http://localhost:8081/benefs?Ben_Nom=${name}`);
@@ -190,10 +183,10 @@ const Depot = ({ onHistoryClick, lightMode }) => {
       }
   
       console.log('Envoi data sent successfully', responseData);
-      return responseData; // Return the response data for further handling if needed
+      return responseData; 
     } catch (error) {
       console.error('Error sending envoi data', error);
-      throw error; // Rethrow the error for proper handling in the calling function
+      throw error; 
     }
   };
 
