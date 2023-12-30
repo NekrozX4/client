@@ -124,8 +124,6 @@ const F12 = ({ lightMode }) => {
     pdf.circle(leftCircleX, leftCircleY, leftCircleRadius);
     pdf.text('Timbre expediteur', leftCircleX, leftCircleY - leftCircleRadius - 2, { align: 'center' });
 
-  
-    // Right Circle
     const rightCircleX = pdf.internal.pageSize.getWidth() - 20;
     const rightCircleY = pdf.autoTable.previous.finalY + 5;
     const rightCircleRadius = 15;

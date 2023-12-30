@@ -68,17 +68,22 @@
   margin-right : -10vw;
   
 }
-
 .selected-agence-data{
-  background-color: #4b4b4b;
-  max-height: 800px;
+  background-color: #818181;
+  max-height: 450px;
   overflow-y: auto;
   border-radius: 10px;
+  position: inherit;
 }
 .selected-agence-data::-webkit-scrollbar{
-  width: 0;
+  background-color: rgb(66, 66, 66);
+  border-radius: 10px;
 }
-
+.selected-agence-data::-webkit-scrollbar-thumb {
+  background-color: rgb(150, 150, 150);
+  border-radius: 5px;
+  cursor: pointer;
+}
 .envoi-btn{
   position: fixed;
   margin-top: -20vh;
@@ -192,4 +197,13 @@
     z-index: 10000000;
   }
 
+  @media screen and (max-width: 1660px) {
+    .selected-agence-data{
+      background-color: #4b4b4b;
+      max-height: 390px;
+      overflow-y: auto;
+      border-radius: 10px;
+      position: inherit;
+    }
+  }
  
