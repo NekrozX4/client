@@ -17,27 +17,22 @@ const Main = () => {
   const [clickedDiv, setClickedDiv] = useState(null);
   const [clickedP, setClickedP] = useState(null);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
   const [showHistorique, setShowHistorique] = useState(false);
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [showDetail, setShowDetail] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState(true);
   
   const [lightMode, setLightMode] = useState(() => {
-    // Load the theme from localStorage or default to false (dark mode)
     const storedMode = localStorage.getItem('lightMode');
     return storedMode === 'true';
   });
 
+  const Logout = () => {
+    localStorage.removeItem('loggedInUser');
+    navigate('/');
+    window.location.reload();
+  };
 
-const Logout = () => {
- 
-  localStorage.removeItem('loggedInUser');
-
-  navigate('/');
-};
-
-  
   const handleMouseEnter = (section) => {
     setClickedDiv(section);
   };
@@ -60,18 +55,13 @@ const Logout = () => {
     }
   };
   
-  
-  
-  
   useEffect(() => {
-    // Load the last clicked component from localStorage when the component mounts
     const storedClickedComponent = localStorage.getItem('lastClickedComponent');
       console.log('Stored last clicked component:', storedClickedComponent);
       if (storedClickedComponent) {
         setClickedP(storedClickedComponent);
       }
-  
-    // Load the theme from localStorage when the component mounts
+
     const storedMode = localStorage.getItem('lightMode');
     if (storedMode) {
       setLightMode(storedMode === 'true');
@@ -108,15 +98,12 @@ const Logout = () => {
   
   const toggleTheme = () => {
     setLightMode((prevMode) => {
-      // Toggle the theme and store the preference in localStorage
       const newMode = !prevMode;
       localStorage.setItem('lightMode', newMode.toString());
       return newMode;
     });
   };
 
-
-  // Add a class to the container based on the lightMode state
   const containerClass = lightMode ? 'container light-mode' : 'container';
   const sidebarClass = lightMode ? 'sidebar light-mode' : 'sidebar';
   const contentClass = lightMode ? 'content light-mode' : 'content';

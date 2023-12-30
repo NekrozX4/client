@@ -77,11 +77,11 @@
     background: rgb(68, 88, 68);
     color: white;  /* Set text color */
     height: 5vh;
-    position: absolute;
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -60vh;
+    margin-top: 10vh;
     width: 40vw;
     border:none;  /* Add border */
     border-radius: 0px;  /* Add border-radius for rounded corners */
@@ -99,6 +99,7 @@
   border-bottom-color: rgb(68, 88, 68);  /* Adjust the color to match the popup */
   transform: translateX(-50%);
 }
+
 .send-cancel-button{
   display: flex;
   justify-content: center;
@@ -183,4 +184,8 @@
 
 .nombre.light-mode {
   background-color: none;
+}
+
+.send-all{
+  margin-top: 5vh;
 }

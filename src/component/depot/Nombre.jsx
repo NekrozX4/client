@@ -77,18 +77,17 @@ const Nombre = ({ onHistoryClick, lightMode }) => {
   
           if (beneficiaireData.length > 0) {
             const expediteurData = beneficiaireData.find((beneficiaire) => beneficiaire.Ben_Nom === expediteurName);
-            const Grp_code = expediteurData.Grp_code;
+            const Grp_code = expediteurData?.Grp_code;
   
             console.log(`Beneficiaire grp_code for ${expediteurName}:`, Grp_code);
   
             const groupementData = await fetchGroupementData(Grp_code);
             console.log(`Groupement data for ${Grp_code}:`, groupementData);
-  
             const matchingGroupement = groupementData.find((groupement) => groupement.Grp_code === Grp_code);
-  
+
             if (matchingGroupement) {
-              console.log(`Matching groupement for ${Grp_code}:`, matchingGroupement);
-              return matchingGroupement.Grp_nom; 
+              const Grp_nom = matchingGroupement.Grp_nom || '';
+              return Grp_nom;
             }
           }
   
@@ -128,36 +127,37 @@ const Nombre = ({ onHistoryClick, lightMode }) => {
     }
   };
   
-  const handleSendButtonClick = async (index) => {
-    
-    const envoiData = {
-      Env_num: csvData[index].Env_num,
-      Env_poids: csvData[index].Env_poids,
-      Env_taxe: csvData[index].Env_taxe,
-      Env_exp: csvData[index].Env_exp,
-      Env_dest: csvData[index].Env_dest,
-      Env_agence_depot: envAgenceDepotData[index], 
-    };
-
+  const handleSendAllButtonClick = async () => {
+    const allEnvoiData = csvData.map((row, index) => ({
+      Env_num: row.Env_num,
+      Env_poids: row.Env_poids,
+      Env_taxe: row.Env_taxe,
+      Env_exp: row.Env_exp,
+      Env_dest: row.Env_dest,
+      Env_agence_depot: envAgenceDepotData[index],
+    }));
+  
     try {
-      const response = await sendEnvoiData(envoiData);
-
-      if (response && response.error) {
-        throw new Error(`Failed to send envoi data: ${response.error}`);
+      const responses = await Promise.all(allEnvoiData.map((envoiData) => sendEnvoiData(envoiData)));
+    
+      const errors = responses.filter((response) => response && response.error);
+    
+      if (errors.length > 0) {
+        console.error('Failed to send some envoi data:', errors);
+      } else {
+        console.log('All envoi data sent successfully!');
+        alert('Sent succesfully')
       }
-
-      console.log('Envoi added successfully!');
-
+    } catch (error) {
+      console.error('Error sending envoi data', error);
+    } finally {
       setShowSuccessPopup(true);
-
+    
       setTimeout(() => {
         setShowSuccessPopup(false);
       }, 3000);
-
-    } catch (error) {
-      console.error('Error sending envoi data', error);
     }
-  };
+  }    
 
   const handleHistoriqueClick = () => {
     onHistoryClick();
@@ -169,12 +169,19 @@ const Nombre = ({ onHistoryClick, lightMode }) => {
     }
   }, [csvData]);
 
-  const handleCancelButtonClick = (index) => {
+  const handleCancelButtonClick = async (index) => {
     const updatedCSVData = [...csvData];
-
     updatedCSVData.splice(index, 1);
-
+  
+    // Verify the remaining data
+    const updatedVerificationStatus = await Promise.all(
+      updatedCSVData.map(async (row) => {
+        return await verifyBeneficiaire(row);
+      })
+    );
+  
     setCSVData(updatedCSVData);
+    setVerificationStatus(updatedVerificationStatus);
   };
   
 
@@ -187,6 +194,7 @@ const Nombre = ({ onHistoryClick, lightMode }) => {
             Importer un fichier exel
           </label>
       <input type='file' id='fileInput' accept='.csv' onChange={handleFileUpload} />
+      <button className= 'send-all' onClick={handleSendAllButtonClick}>send all</button>
       <table className='nbr-table'>
         <thead>
           <tr>
@@ -201,43 +209,46 @@ const Nombre = ({ onHistoryClick, lightMode }) => {
           </tr>
         </thead>
         <tbody>
-          {csvData.map((row, index) => (
-            <tr key={index}>
-           <td>{row.Env_num}</td>
-                <td>{row.Env_poids} g</td>
-                <td>{row.Env_taxe} <span>&nbsp;</span><span>&nbsp;</span>Ar</td>
-                <td style={{ backgroundColor: verificationStatus[index]?.expediteurExists ? 'rgb(0, 128, 0,0.5)': 'rgb(255, 0, 0,0.5)'}}>
-                  {row.Env_exp}
-                </td>
-                <td style={{ backgroundColor: verificationStatus[index]?.destinataireExists ? 'rgb(0, 128, 0,0.5)' : 'rgb(255, 0, 0,0.5)' }}>
-                  {row.Env_dest}
-                </td>            
-              <td>{envAgenceDepotData[index]}</td>
-              <td>
-                {verificationStatus[index]?.expediteurExists && verificationStatus[index]?.destinataireExists ? (
-                  <span style={{ color: 'green' }}>✔️</span>
-                ) : (
-                  <span style={{ color: 'red' }}>❌</span>
-                )}
-              </td>
-              <td className='send-cancel-button'>
-                {verificationStatus[index]?.expediteurExists && verificationStatus[index]?.destinataireExists ? (
-                  <button onClick={() => handleSendButtonClick(index)}>send</button>
-                ) : (
-                  <span>Cannot send</span>
-                )}
-                <button onClick={() => handleCancelButtonClick(index)}>cancel</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
+  {csvData.map((row, index) => (
+    <tr key={index}>
+      <td>{row.Env_num}</td>
+      <td>{row.Env_poids} g</td>
+      <td>{row.Env_taxe} <span>&nbsp;</span><span>&nbsp;</span>Ar</td>
+      <td style={{ backgroundColor: verificationStatus[index]?.expediteurExists ? 'rgb(0, 128, 0,0.5)': 'rgb(255, 0, 0,0.5)'}}>
+        {row.Env_exp}
+      </td>
+      <td style={{ backgroundColor: verificationStatus[index]?.destinataireExists ? 'rgb(0, 128, 0,0.5)' : 'rgb(255, 0, 0,0.5)' }}>
+        {row.Env_dest}
+      </td>
+      <td>{envAgenceDepotData[index]}</td>
+      <td>
+        {verificationStatus[index]?.expediteurExists && verificationStatus[index]?.destinataireExists ? (
+          <span style={{ color: 'green' }}>✔️</span>
+        ) : (
+          <span style={{ color: 'red' }}>❌</span>
+        )}
+      </td>
+      <td className='send-cancel-button'>
+        {verificationStatus[index]?.expediteurExists && verificationStatus[index]?.destinataireExists ? (
+          <h3>can send</h3>
+         
+        ) : (
+          <span>Cannot send</span>
+        )}
+        <button onClick={() => handleCancelButtonClick(index)}>cancel</button>
+      </td>
+    </tr>
+  ))}
+</tbody>
+
       </table>
-      {showSuccessPopup && (
-        <div className="success-popup">
-          <p>Envoi added successfully!</p>
-        </div>
-      )}
-    </div>
+     
+    {showSuccessPopup && (
+      <div className="success-popup">
+        <p>Envoi added successfully!</p>
+      </div>
+    )}
+  </div>
   );
 };
 

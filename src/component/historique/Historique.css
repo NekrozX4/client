@@ -15,7 +15,12 @@
     overflow-y: auto; 
     height: 100%;
     overflow-y: hidden ;
-    animation : fadeinleft 0.5s ease-in
+    animation : fadeinleft 0.5s ease-in;
+    margin-top: 10vh;
+}
+
+.container-history{
+  margin-top: 5vh;
 }
 
 .historique-item {
@@ -31,8 +36,9 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     animation : identifier 1s ease-in;
 }
-
-
+.history-item::-webkit-scrollbar{
+  width: 0;
+}
 .search-bar-history button {
     padding: 5px;
     display: flex;
@@ -48,6 +54,35 @@
     align-items: center;
     justify-content: center;
     width: fit-content;
+}
+.dropdown-container{
+  position: fixed;
+}
+.selected-agence-data {
+  margin-top: 15vh;
+  
+}
+.agenceH2{
+  position: fixed;
+  margin-top: -10vh;
+  margin-right : -10vw;
+  
+}
+
+.selected-agence-data{
+  background-color: #4b4b4b;
+  max-height: 800px;
+  overflow-y: auto;
+  border-radius: 10px;
+}
+.selected-agence-data::-webkit-scrollbar{
+  width: 0;
+}
+
+.envoi-btn{
+  position: fixed;
+  margin-top: -20vh;
+  margin-left: 40vw;
 }
 
 .light-mode .search-bar-history input{
@@ -154,5 +189,7 @@
 
   .history-header h1{
     margin-bottom: 5vh;
-    z-index: 10000;
+    z-index: 10000000;
   }
+
+ 
