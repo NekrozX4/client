@@ -11,7 +11,7 @@
   
   .particulier-container.light-mode .input-container div {
     background-color: transparent;
-    border: 2px solid rgb(0, 0, 0);
+    border: 2px solid rgb(19, 19, 19);
     border-radius: 10px;
     animation: entry 0.2s ease-in;
   }
