@@ -1,6 +1,11 @@
 #light{}
 #dark{}
 
+body{
+    padding: 0;
+    margin: 0 ;
+}
+
 #dark.container header{
     background-color: #fff;
 }

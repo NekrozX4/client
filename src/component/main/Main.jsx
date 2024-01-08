@@ -29,8 +29,8 @@ const Main = () => {
 
   const Logout = () => {
     localStorage.removeItem('loggedInUser');
+    localStorage.removeItem('lastClickedComponent');
     navigate('/');
-    window.location.reload();
   };
 
   const handleMouseEnter = (section) => {
