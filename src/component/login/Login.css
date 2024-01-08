@@ -5,7 +5,7 @@
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background-image: url('../../assets/paositra.png');
+  background: linear-gradient( to right , black, orange, rgb(0, 0, 0));
   background-repeat: repeat;
   background-size: contain;
 }
@@ -28,9 +28,8 @@
     align-items: center;
     justify-content: center;
     width: 35vw;
-    height: 100vh;
-    margin-right: 0.5vw;
-    margin-left: auto;
+    height: 50vh;
+    border-radius: 20px;
     border: none;
     background-color: rgb(54, 54, 54); 
     z-index: 55;
